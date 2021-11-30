@@ -1,11 +1,10 @@
-<template>
-    <div>
-        <Head :title="title" />
+<template> <!-- Static -->
+    <jet-banner />
 
-        <jet-banner />
-
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+    <div class="min-h-screen bg-gray-100">
+        <!-- Page Header -->
+        <header>
+            <nav class="bg-white border-b border-gray-100" v-if="$page.props.user">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -22,6 +21,10 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('testing.workbench')" :active="route().current('testing.workbench')" v-if="$page.props.appEnv === 'local'">
+                                    Workbench
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -30,15 +33,15 @@
                                 <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
                                     <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
-                                                {{ $page.props.user.current_team.name }}
+                                    <span class="inline-flex rounded-md">
+                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                            {{ $page.props.user.current_team.name }}
 
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </span>
+                                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </span>
                                     </template>
 
                                     <template #content>
@@ -90,14 +93,14 @@
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                                                {{ $page.props.user.name }}
+                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                            {{ $page.props.user.name }}
 
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </span>
+                                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </span>
                                     </template>
 
                                     <template #content>
@@ -144,6 +147,9 @@
                     <div class="pt-2 pb-3 space-y-1">
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('testing.workbench')" :active="route().current('testing.workbench')" v-if="$page.props.appEnv === 'local'">
+                            Workbench
                         </jet-responsive-nav-link>
                     </div>
 
@@ -215,21 +221,259 @@
                     </div>
                 </div>
             </nav>
+        </header>
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
+        <!-- Page Content -->
+        <main>
+            <slot></slot>
+        </main>
 
-            <!-- Page Content -->
-            <main>
-                <slot></slot>
-            </main>
+        <!-- Page Footer -->
+        <footer class="text-gray-600 body-font bg-white border-b border-gray-100">
+        <div
+        class="
+        container
+        px-5
+        py-24
+        mx-auto
+        flex
+        md:items-center
+        lg:items-start
+        md:flex-row md:flex-nowrap
+        flex-wrap flex-col
+        "
+        >
+        <div
+        class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left"
+        >
+        <a
+        href=""
+        class="
+        flex
+        title-font
+        font-medium
+        items-center
+        md:justify-start
+        justify-center
+        text-gray-900
+        "
+        >
+        <i class="fas fa-cubes fa-lg text-purple-500"></i>
+        <span class="ml-3 text-xl">Tailwind elements</span>
+        </a>
+        <p class="mt-2 text-sm text-gray-500">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
+        quam?
+        </p>
         </div>
+        <div
+        class="
+        flex-grow flex flex-wrap
+        md:pl-20
+        -mb-10
+        md:mt-0
+        mt-10
+        md:text-left
+        text-center
+        "
+        >
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2
+        class="
+        title-font
+        font-medium
+        text-gray-900
+        tracking-widest
+        text-sm
+        mb-3
+        "
+        >
+        CATEGORIES
+        </h2>
+        <nav class="list-none mb-10">
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >First Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Second Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Third Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Fourth Link</a
+        >
+        </li>
+        </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2
+        class="
+        title-font
+        font-medium
+        text-gray-900
+        tracking-widest
+        text-sm
+        mb-3
+        "
+        >
+        CATEGORIES
+        </h2>
+        <nav class="list-none mb-10">
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >First Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Second Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Third Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Fourth Link</a
+        >
+        </li>
+        </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2
+        class="
+        title-font
+        font-medium
+        text-gray-900
+        tracking-widest
+        text-sm
+        mb-3
+        "
+        >
+        CATEGORIES
+        </h2>
+        <nav class="list-none mb-10">
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >First Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Second Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Third Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Fourth Link</a
+        >
+        </li>
+        </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2
+        class="
+        title-font
+        font-medium
+        text-gray-900
+        tracking-widest
+        text-sm
+        mb-3
+        "
+        >
+        CATEGORIES
+        </h2>
+        <nav class="list-none mb-10">
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >First Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Second Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Third Link</a
+        >
+        </li>
+        <li>
+        <a href="" class="text-gray-600 hover:text-gray-800"
+        >Fourth Link</a
+        >
+        </li>
+        </nav>
+        </div>
+        </div>
+        </div>
+        <div class="bg-white">
+        <div
+        class="
+        container
+        mx-auto
+        py-4
+        px-5
+        flex flex-wrap flex-col
+        sm:flex-row
+        "
+        >
+        <p class="text-gray-500 text-sm text-center sm:text-left">
+        © 2021 Copyright:
+        <a
+        href="https://www.tailwind-elements.com/"
+        class="text-gray-600 ml-1"
+        target="_blank"
+        >Tailwind Elements</a
+        >
+        </p>
+        <span
+        class="
+        inline-flex
+        sm:ml-auto sm:mt-0
+        mt-2
+        justify-center
+        sm:justify-start
+        "
+        >
+        <a href="" class="text-gray-500">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="ml-3 text-gray-500">
+        <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="ml-3 text-gray-500">
+        <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="" class="ml-3 text-gray-500">
+        <i class="fab fa-youtube"></i>
+        </a>
+        <a href="" class="ml-3 text-gray-500">
+        <i class="fab fa-instagram"></i>
+        </a>
+        </span>
+        </div>
+        </div>
+        </footer>
     </div>
 </template>
+
 
 <script>
     import { defineComponent } from 'vue'
@@ -239,27 +483,20 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
-    import { Head, Link } from '@inertiajs/inertia-vue3';
 
     export default defineComponent({
-        props: {
-            title: String,
-        },
-
         components: {
-            Head,
             JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
-            Link,
         },
 
         data() {
             return {
-                showingNavigationDropdown: false,
+                showingNavigationDropdown: false
             }
         },
 

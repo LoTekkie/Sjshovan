@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Team Settings">
+    <page-layout title="Team Settings">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Team Settings
@@ -22,12 +22,12 @@
                 </template>
             </div>
         </div>
-    </app-layout>
+    </page-layout>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
+    import PageLayout from '@/Layouts/PageLayout.vue'
     import DeleteTeamForm from '@/Pages/Teams/Partials/DeleteTeamForm.vue'
     import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
     import TeamMemberManager from '@/Pages/Teams/Partials/TeamMemberManager.vue'
@@ -41,7 +41,7 @@
         ],
 
         components: {
-            AppLayout,
+            PageLayout,
             DeleteTeamForm,
             JetSectionBorder,
             TeamMemberManager,

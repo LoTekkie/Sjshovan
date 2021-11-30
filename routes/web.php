@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,15 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+
+//Local Routes
+if (app()->environment('local')) {
+    Route::prefix('testing')->name('testing.')->group(function () {
+        Route::get('workbench', [Controllers\TestingController::class, 'workbench'])->name('workbench');
+    });
+}
