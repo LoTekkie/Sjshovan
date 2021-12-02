@@ -1,5 +1,3 @@
-
-
 require('./bootstrap');
 
 import { createApp, h } from 'vue';
@@ -8,6 +6,12 @@ import { InertiaProgress } from '@inertiajs/progress';
 import AppLayout from "@/Layouts/AppLayout";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+} else {
+    document.documentElement.classList.remove('dark')
+}
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -23,7 +27,7 @@ createInertiaApp({
             .component("Head", Head)
             .mixin({ methods: { route } })
             .mount(el);
-    },
+    }
 });
 
 InertiaProgress.init({ color: '#4B5563' });
