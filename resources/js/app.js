@@ -17,7 +17,7 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => {
         let page = require(`./Pages/${name}.vue`).default;
-        page.layout = AppLayout || undefined;
+        //page.layout = AppLayout || undefined;
         return page;
     },
     setup({ el, app, props, plugin }) {
