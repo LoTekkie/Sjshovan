@@ -1,6 +1,6 @@
 <template>
     <Head title="Welcome" />
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 transition-all duration-700 ease-in-out">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 transition-colors duration-700 ease-in-out">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 underline">
                 Dashboard
@@ -25,7 +25,7 @@
                 </svg>
             </div>
 
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg transition-all duration-700 ease-in-out">
+            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg transition-colors duration-700 ease-in-out">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
                         <div class="flex items-center">
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+            <div class="flex justify-center mt-4 mb-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
                     <div class="flex items-center">
                         <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">

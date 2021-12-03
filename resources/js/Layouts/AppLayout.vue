@@ -1,9 +1,9 @@
 <template> <!-- Static -->
     <jet-banner />
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 ">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <!-- Page Header -->
         <header>
-            <nav class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-400 transition-all duration-700 ease-in-out" v-if="$page.props.user">
+            <nav class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-400 transition-colors duration-700 ease-in-out" v-if="$page.props.user">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -228,7 +228,7 @@
         </main>
 
         <!-- Page Footer -->
-        <footer class="text-gray-600 body-font bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-400 transition-all duration-700 ease-in-out">
+        <footer class="text-gray-600 body-font bg-white dark:bg-gray-800  transition-colors duration-700 ease-in-out">
             <div id="footer-links">
                 <div
                 class="
@@ -263,7 +263,7 @@
                 <span class="ml-3 text-xl dark:text-white underline">Site Theme</span>
                 </a>
                 <toggle-button
-                    :options="btnThemeToggle.options"
+                    :options="btnToggleTheme.options"
                 ></toggle-button>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 </p>
@@ -431,7 +431,7 @@
                 </div>
             </div>
             <div id="footer-copyright">
-                <div class="bg-white dark:bg-gray-900 transition-all duration-700 ease-in-out">
+                <div class="bg-white dark:bg-gray-900 transition-colors duration-700 ease-in-out">
                 <div
                 class="
                 container
@@ -507,7 +507,7 @@
         data() {
             return {
                 showingNavigationDropdown: false,
-                btnThemeToggle: {
+                btnToggleTheme: {
                     options: {
                         theme: {
                             on: {
@@ -515,7 +515,8 @@
                                 panel: ["bg-indigo-500"]
                             },
                             off: {
-                                labelText: "Theme: Light"
+                                labelText: "Theme: Light",
+                                label: ["text-gray-800"]
                             },
                             panel: ["ml-3", "mr-3"],
                             switch: ["ml-3"],
@@ -531,7 +532,6 @@
                 }
             }
         },
-
         methods: {
             switchToTeam(team) {
                 this.$inertia.put(route('current-team.update'), {

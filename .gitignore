@@ -14,6 +14,7 @@ npm-debug.log
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
+/local
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm

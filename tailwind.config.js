@@ -14,7 +14,6 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-
             },
             minHeight: {
                 '1/4': '25%',
