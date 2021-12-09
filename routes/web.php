@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +18,20 @@ use App\Http\Controllers;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+    return Inertia::render('Home', [
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'crisp' => true
     ]);
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->prefix('/admin')->name('admin.')->group(function () {
+    Route::get('/', function () { return Redirect::route('admin.dashboard'); });
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
-
-//Local Routes
-if (app()->environment('local')) {
-    Route::prefix('testing')->name('testing.')->group(function () {
+    if (app()->environment('local')) {
         Route::get('workbench', [Controllers\TestingController::class, 'workbench'])->name('workbench');
-    });
-}
+    }
+});

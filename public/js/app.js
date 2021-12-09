@@ -1,6 +1,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/@inertiajs/inertia-vue3/dist/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/@inertiajs/inertia-vue3/dist/index.js ***!
@@ -19190,6 +19201,451 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var _propDefaults = {
+  theme: {
+    chars: {
+      encoded: ["font-body"],
+      decoded: ["font-body"]
+    },
+    wrap: ["w-full", "h-full", "flex", "flex-row", "flex-nowrap"]
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
+  props: {
+    enabled: {
+      type: Boolean,
+      "default": true
+    },
+    loop: {
+      type: Boolean,
+      "default": false
+    },
+    text: {
+      type: String,
+      "default": ""
+    },
+    direction: {
+      type: Number,
+      "default": 1 //-1:reverse, 0:random, 1:forward
+
+    },
+    scramble: {
+      type: Boolean,
+      "default": true
+    },
+    decodeSync: {
+      type: Boolean,
+      "default": false
+    },
+    startDelay: {
+      type: Number,
+      "default": 1000
+    },
+    scrambleDelay: {
+      type: Number,
+      "default": 100
+    },
+    decodeDelay: {
+      type: Number,
+      "default": 100
+    },
+    loopDelay: {
+      type: Number,
+      "default": 3000
+    },
+    decodeChars: {
+      type: String,
+      "default": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+    },
+    theme: {
+      type: Object,
+      "default": function _default() {
+        return _propDefaults.theme;
+      }
+    }
+  },
+  data: function data() {
+    return {
+      isDecoded: false,
+      fzn: Object.freeze({
+        _wrapId: _.uniqueId("fx-decode-wrap-")
+      }),
+      loc: {
+        text: this.text,
+        theme: _.merge(_propDefaults.theme, this.theme)
+      }
+    };
+  },
+  computed: {
+    c_chars: function c_chars() {
+      return this.loc.text.split("").map(function (_char) {
+        return _char.replace(" ", "\xA0");
+      });
+    },
+    c_theme: function c_theme() {
+      return this.loc.theme;
+    },
+    c_classCharsEncoded: function c_classCharsEncoded() {
+      return _h.ensureArray(this.c_theme.chars.encoded);
+    },
+    c_classCharsDecoded: function c_classCharsDecoded() {
+      return _h.ensureArray(this.c_theme.chars.decoded);
+    },
+    c_classWrap: function c_classWrap() {
+      return _h.ensureArray(this.c_theme.wrap);
+    }
+  },
+  methods: {
+    startFx: function startFx() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var children, chars, scrambleText, decodeText;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.isDecoded = false;
+                children = _toConsumableArray(_this.$el.children);
+                chars = _toConsumableArray(_this.c_chars);
+                children.forEach(function (span) {
+                  var _span$classList, _span$classList2;
+
+                  (_span$classList = span.classList).remove.apply(_span$classList, _toConsumableArray(_this.c_classCharsDecoded));
+
+                  (_span$classList2 = span.classList).add.apply(_span$classList2, _toConsumableArray(_this.c_classCharsEncoded));
+
+                  span.innerText = _this.decodeChars.charAt(Math.random() * _this.decodeChars.length);
+                });
+
+                scrambleText = function scrambleText() {
+                  if (!_this.isDecoded) {
+                    children.forEach(function (span) {
+                      span.innerText = _this.decodeChars.charAt(Math.random() * _this.decodeChars.length);
+                    });
+                    setTimeout(scrambleText, _this.scrambleDelay);
+                  }
+                };
+
+                decodeText = function decodeText() {
+                  if (!_this.isDecoded) {
+                    if (children.length) {
+                      var _span$classList3, _span$classList4;
+
+                      var span;
+
+                      switch (_this.direction) {
+                        case -1:
+                          span = children.pop();
+                          span.innerText = chars.pop();
+                          break;
+
+                        case 0:
+                          var i = Math.floor(Math.random() * children.length);
+                          span = children.splice(i, 1).pop();
+                          span.innerText = chars.splice(i, 1).shift();
+                          break;
+
+                        default:
+                          span = children.shift();
+                          span.innerText = chars.shift();
+                      }
+
+                      (_span$classList3 = span.classList).remove.apply(_span$classList3, _toConsumableArray(_this.c_classCharsEncoded));
+
+                      (_span$classList4 = span.classList).add.apply(_span$classList4, _toConsumableArray(_this.c_classCharsDecoded));
+                    } else {
+                      _this.endFx();
+                    }
+
+                    setTimeout(decodeText, _this.decodeSync ? _this.decodeDelay / children.length : _this.decodeDelay);
+                  }
+                };
+
+                if (_this.scramble) {
+                  setTimeout(scrambleText, _this.scrambleDelay);
+                }
+
+                _context.next = 9;
+                return _h.asyncDelay(_this.startDelay).then(decodeText);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    endFx: function endFx() {
+      this.isDecoded = true;
+
+      if (this.enabled && this.loop) {
+        setTimeout(this.startFx, this.loopDelay);
+      }
+    }
+  },
+  created: function created() {
+    if (!this.loc.text && this.$slots["default"]) {
+      this.loc.text = _h.getChildrenTextContent(this.$slots["default"]());
+    }
+  },
+  mounted: function mounted() {
+    this.$el.firstElementChild.remove();
+
+    if (this.enabled) {
+      this.startFx();
+    }
+  }
+}));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var _propDefaults = {
+  theme: {
+    wrap: ["bg-center", "bg-cover", "absolute", "inset-0", "bg-black"]
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
+  props: {
+    enabled: {
+      type: Boolean,
+      "default": true
+    },
+    delay: {
+      type: Number,
+      "default": 50
+    },
+    colWidth: {
+      type: Number,
+      "default": 20
+    },
+    charHeight: {
+      type: Number,
+      "default": 20
+    },
+    font: {
+      type: String,
+      "default": "10pt sans-serif"
+    },
+    getBackgroundStyle: {
+      type: Function,
+      "default": function _default() {
+        return "#000";
+      }
+    },
+    getFillStyle: {
+      type: Function,
+      "default": function _default() {
+        return "#0001";
+      }
+    },
+    getCharStyle: {
+      type: Function,
+      "default": function _default() {
+        return "#04d900";
+      }
+    },
+    availChars: {
+      type: String,
+      "default": '!\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
+    },
+    theme: {
+      type: Object,
+      "default": function _default() {
+        return _propDefaults.theme;
+      }
+    }
+  },
+  data: function data() {
+    return {
+      isRunning: false,
+      columns: 0,
+      positions: [],
+      width: 0,
+      height: 0,
+      fzn: Object.freeze({
+        _wrapId: _.uniqueId("fx-matrix-wrap-")
+      }),
+      loc: {
+        theme: _.merge(_propDefaults.theme, this.theme)
+      }
+    };
+  },
+  computed: {
+    c_theme: function c_theme() {
+      return this.loc.theme;
+    },
+    c_classWrap: function c_classWrap() {
+      return _h.ensureArray(this.c_theme.wrap);
+    }
+  },
+  methods: {
+    startFx: function startFx() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var wrap, canvas, ctx, runMatrix;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.isRunning) {
+                  _this.isRunning = true;
+                  window.removeEventListener('resize', _this.resize);
+                  window.addEventListener('resize', _this.resize);
+                  wrap = _this.$el;
+                  canvas = wrap.firstChild;
+                  ctx = canvas.getContext('2d');
+                  _this.width = canvas.width = wrap.offsetWidth;
+                  _this.height = canvas.height = wrap.offsetHeight;
+                  _this.columns = Math.floor(_this.width / _this.colWidth) + 1;
+                  _this.positions = Array.from({
+                    length: _this.columns
+                  }, function () {
+                    return Math.floor(Math.random() * 100);
+                  });
+                  ctx.fillStyle = _this.getBackgroundStyle();
+                  ctx.fillRect(0, 0, _this.width, _this.height);
+
+                  runMatrix = function runMatrix() {
+                    if (_this.isRunning) {
+                      ctx.fillStyle = _this.getFillStyle();
+                      ctx.fillRect(0, 0, _this.width, _this.height);
+                      ctx.fillStyle = _this.getCharStyle();
+                      ctx.font = _this.font;
+
+                      _this.positions.forEach(function (y, ind) {
+                        var text = _this.availChars.charAt(Math.random() * _this.availChars.length);
+
+                        var x = ind * _this.colWidth;
+                        ctx.fillText(text, x, y);
+
+                        if (y > _this.height / 2 + Math.random() * 10000) {
+                          _this.positions[ind] = 0;
+                        } else {
+                          _this.positions[ind] = y + _this.charHeight;
+                        }
+                      });
+
+                      setTimeout(runMatrix, _this.delay);
+                    } else {
+                      _this.endFx();
+                    }
+                  };
+
+                  setTimeout(runMatrix, _this.delay);
+                }
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    endFx: function endFx() {
+      this.isRunning = false;
+      this.$el.removeEventListener('resize', this.resize);
+    },
+    resize: function resize() {
+      var wrap = this.$el;
+      var canvas = wrap.firstChild;
+
+      if (wrap.offsetWidth > this.width) {
+        var _this$positions;
+
+        this.width = canvas.width = wrap.offsetWidth;
+        var cols = Math.floor(this.width / this.colWidth) + 1;
+
+        (_this$positions = this.positions).push.apply(_this$positions, _toConsumableArray(Array.from({
+          length: cols - this.columns
+        }, function () {
+          return Math.floor(Math.random() * 100);
+        })));
+
+        this.columns = cols;
+      }
+
+      this.height = canvas.height = wrap.offsetHeight;
+    }
+  },
+  mounted: function mounted() {
+    if (this.enabled) {
+      this.startFx();
+    }
+  }
+}));
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/ToggleButton.vue?vue&type=script&lang=js":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/ToggleButton.vue?vue&type=script&lang=js ***!
@@ -19260,7 +19716,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.resolveThemeClass("label");
     },
     classWrap: function classWrap() {
-      return this.ensureArray(this.theme.wrap);
+      return _h.ensureArray(this.theme.wrap);
     }
   },
   methods: {
@@ -19268,12 +19724,9 @@ __webpack_require__.r(__webpack_exports__);
       this.isToggled = !this.isToggled;
       this.options.callbacks.onClick(this);
     },
-    ensureArray: function ensureArray(object) {
-      return Array.isArray(object) ? object : [];
-    },
     resolveThemeClass: function resolveThemeClass(context) {
-      var arr = this.isToggled ? this.ensureArray(this.theme.on[context]) : this.ensureArray(this.theme.off[context]);
-      return window._.union(arr, this.ensureArray(this.theme[context]));
+      var arr = this.isToggled ? _h.ensureArray(this.theme.on[context]) : _h.ensureArray(this.theme.off[context]);
+      return window._.union(arr, _h.ensureArray(this.theme[context]));
     }
   },
   beforeMount: function beforeMount() {
@@ -20776,6 +21229,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/PageLayout */ "./resources/js/Layouts/PageLayout.vue");
+/* harmony import */ var _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/DecodeEffect */ "./resources/js/Components/DecodeEffect.vue");
+/* harmony import */ var _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/MatrixEffect */ "./resources/js/Components/MatrixEffect.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  layout: null,
+  components: {
+    PageLayout: _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+    DecodeEffect: _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_2__["default"],
+    MatrixEffect: _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  data: function data() {
+    return {
+      fxDecodeOptions: {
+        enabled: true,
+        direction: 0,
+        scramble: true,
+        startDelay: 500,
+        scrambleDelay: 100,
+        decodeDelay: 100,
+        decodeSync: false,
+        decodeChars: "10",
+        theme: {
+          chars: {
+            encoded: ["font-body", "text-matrix"]
+          }
+        }
+      },
+      fxMatrixOptions: {
+        enabled: true,
+        delay: 50,
+        font: "15pt sans-serif",
+        availChars: "10",
+        getCharStyle: function getCharStyle() {
+          return "#4865ff";
+        }
+      },
+      navItems: ["about", "services", "portfolio", "clients", "work", "statistics", "blog", "contact"]
+    };
+  },
+  methods: {
+    scrollTo: function scrollTo(id) {
+      var $el = document.getElementById("".concat(id));
+      window.scroll({
+        top: $el.offsetTop,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+}));
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/PrivacyPolicy.vue?vue&type=script&lang=js":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/PrivacyPolicy.vue?vue&type=script&lang=js ***!
@@ -21663,12 +22185,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/PageLayout */ "./resources/js/Layouts/PageLayout.vue");
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  components: {
-    PageLayout: _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__["default"]
+  props: {
+    someProp: {
+      type: String,
+      "default": "Hello"
+    }
+  },
+  data: function data() {
+    return {
+      local: {
+        someProp: this.someProp
+      }
+    };
+  },
+  beforeMount: function beforeMount() {
+    this.local.someProp = "Hello, World!";
+    console.log(this.local.someProp);
+    console.log(this.someProp);
+    console.log(this.someProp = "Oh, no!");
   }
 }));
 
@@ -21695,6 +22231,71 @@ __webpack_require__.r(__webpack_exports__);
     phpVersion: String
   }
 }));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = ["id"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    id: this.fzn._wrapId,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(_ctx.c_classWrap)
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.c_chars, function (_char, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+      key: index,
+      "class": "flex"
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_char), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 10
+  /* CLASS, PROPS */
+  , _hoisted_1);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = ["id"];
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("canvas", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    id: this.fzn._wrapId,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(_ctx.c_classWrap)
+  }, _hoisted_3, 10
+  /* CLASS, PROPS */
+  , _hoisted_1);
+}
 
 /***/ }),
 
@@ -23300,7 +23901,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_toggle_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("toggle-button");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Static "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_banner), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Primary Navigation Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Logo "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('dashboard')
+    href: _ctx.route('admin.dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_application_mark, {
@@ -23313,7 +23914,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navigation Links "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_nav_link, {
-    href: _ctx.route('dashboard'),
+    href: _ctx.route('admin.dashboard'),
     active: _ctx.route().current('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23326,8 +23927,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href", "active"]), _ctx.$page.props.appEnv === 'local' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_nav_link, {
     key: 0,
-    href: _ctx.route('testing.workbench'),
-    active: _ctx.route().current('testing.workbench')
+    href: _ctx.route('admin.workbench'),
+    active: _ctx.route().current('admin.workbench')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_9];
@@ -23496,7 +24097,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'hidden': !_ctx.showingNavigationDropdown
     }, "sm:hidden"])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
-    href: _ctx.route('dashboard'),
+    href: _ctx.route('admin.dashboard'),
     active: _ctx.route().current('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23509,8 +24110,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href", "active"]), _ctx.$page.props.appEnv === 'local' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_responsive_nav_link, {
     key: 0,
-    href: _ctx.route('testing.workbench'),
-    active: _ctx.route().current('testing.workbench')
+    href: _ctx.route('admin.workbench'),
+    active: _ctx.route().current('admin.workbench')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_41];
@@ -25091,6 +25692,251 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "w-full z-50 top-0 py-3 sm:py-5 absolute"
+};
+var _hoisted_2 = {
+  "class": "container flex justify-between items-center"
+};
+var _hoisted_3 = {
+  "class": "flex truncate h-16 justify-center items-center flex-column nowrap"
+};
+var _hoisted_4 = {
+  href: "/"
+};
+var _hoisted_5 = {
+  "class": "text-white text-4xl"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sjshovan.com");
+
+var _hoisted_7 = {
+  "class": "hidden lg:block truncate max-h-10"
+};
+var _hoisted_8 = {
+  "class": "flex items-center"
+};
+var _hoisted_9 = {
+  "class": "group pl-6"
+};
+var _hoisted_10 = ["onClick"];
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "block lg:hidden"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-menu text-white text-4xl"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_14 = [_hoisted_13];
+var _hoisted_15 = {
+  "class": "w-2/3 md:w-1/3 bg-primary min-h-screen absolute right-0 shadow py-4 px-8"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  alt: "",
+  "class": "h-10 w-auto",
+  src: "/img/icon-close.svg"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = {
+  "class": "flex flex-col mt-8"
+};
+var _hoisted_19 = {
+  "class": "py-2"
+};
+var _hoisted_20 = {
+  "class": "py-2"
+};
+var _hoisted_21 = {
+  "class": "py-2"
+};
+var _hoisted_22 = {
+  "class": "py-2"
+};
+var _hoisted_23 = {
+  "class": "py-2"
+};
+var _hoisted_24 = {
+  "class": "py-2"
+};
+var _hoisted_25 = {
+  "class": "py-2"
+};
+var _hoisted_26 = {
+  "class": "py-2"
+};
+var _hoisted_27 = {
+  "class": "bg-center bg-cover bg-no-repeat relative py-8"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-center bg-cover bg-no-repeat absolute inset-0 z-20 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
+  "class": "container z-30 relative pt-20 sm:pt-56 lg:pt-64 pb-12 sm:pb-48 lg:pb-48"
+};
+var _hoisted_30 = {
+  "class": "flex flex-col lg:flex-row justify-center items-center"
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "rounded-full border-8 border-primary shadow-xl flex-shrink-0"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  alt: "author",
+  "class": "h-48 sm:h-56 rounded-full",
+  src: "/img/me.jpg"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_32 = {
+  "class": "lg:pl-8 pt-8 sm:pt-10 lg:pt-0"
+};
+var _hoisted_33 = {
+  "class": "font-header text-white text-4xl sm:text-5xl md:text-6xl text-center truncate max-h-10 md:max-h-16"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Hi, I'm Sid Shovan!");
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-3 sm:pt-5\"><div class=\"flex justify-center sm:justify-start items-center pl-0 md:pl-1\"><p class=\"font-body text-white text-lg uppercase\"></p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-yellow text-3xl\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div>", 1);
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-grey-50\" id=\"about\"><div class=\"container py-16 md:py-20 flex flex-col lg:flex-row items-center\"><div class=\"w-full sm:w-3/4 lg:w-3/5 text-center lg:text-left\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase\"> Who am I? </h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6\"> I&#39;m Christy Smith, a Web Designer &amp; Photographer </h4><p class=\"font-body text-grey-20 pt-6 leading-relaxed\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-6\"><div class=\"flex justify-center sm:justify-start items-center\"><p class=\"font-body font-semibold text-grey-20 text-lg uppercase\"> Connect with me </p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-primary text-2xl\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-primary hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-primary hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-dribbble text-primary hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-primary hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-instagram text-primary hover:text-yellow text-2xl\"></i></a></div></div></div><div class=\"w-full sm:w-3/4 lg:w-2/5 pl-0 lg:pl-12 pt-10 lg:pt-0\"><div><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">HTML &amp; CSS</h4><h3 class=\"font-body font-bold text-primary text-3xl\">85%</h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:85%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">Python</h4><h3 class=\"font-body font-bold text-primary text-3xl\">70%</h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:70%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">Javascript</h4><h3 class=\"font-body font-bold text-primary text-3xl\">98%</h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:98%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">Figma</h4><h3 class=\"font-body font-bold text-primary text-3xl\">91%</h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:91%;\"></div></div></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"services\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s what I&#39;m good at</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> These are the services Ioffer</h3><div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pt-10 md:pt-12\"><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"development icon\" src=\"/img/icon-development-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"development icon\" src=\"/img/icon-development-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> WEB DEVELOPMENT</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"content marketing icon\" src=\"/img/icon-content-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"content marketing icon\" src=\"/img/icon-content-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Technical Writing</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Mobile Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Email Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Graphic Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Web Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"portfolio\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Check out my Portfolio</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I have done with the past</h3><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 pt-12\"><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-apple.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-stripe.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-fedex.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-microsoft.jpeg\"></a></div></div><div class=\"bg-grey-50\" id=\"clients\"><div class=\"container py-16 md:py-20\"><div class=\"w-full sm:w-3/4 lg:w-full mx-auto\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My latest clients</h2><div class=\"flex flex-wrap items-center justify-center pt-4 sm:pt-4\"><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-coca-cola.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-apple.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-netflix.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-amazon.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-stripe.svg\"></span></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"work\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My work experience </h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I did before freelancing </h3><div class=\"w-full lg:w-2/3 mx-auto flex flex-col mt-12 relative\"><span class=\"absolute inset-y-0 left-2/5 ml-10 w-0.5 bg-grey-40 hidden md:block\"></span><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-spotify.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Apr2015 - Mar 2018</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Frontend Developer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-microsoft.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Mar 2018 - September 2019</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Software Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-fedex.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">October 2019 - Feb 2021</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">DevOps Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vestibulum mattis felis vitae risus pulvinartincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div></div></div><div class=\"bg-top bg-cover bg-no-repeat pb-16 md:py-16 lg:py-24\" id=\"statistics\" style=\"background-image:url(/img/experience-figure.png);\"><div class=\"container\"><div class=\"bg-white w-5/6 md:w-11/12 2xl:w-full mx-auto py-16 lg:py-20 xl:py-24 shadow\"><div class=\"grid grid-cols-2 xl:grid-cols-4 gap-5 md:gap-8 xl:gap-5\"><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon project\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-project.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">12</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Finished Projects </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon award\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-award.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">3</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Awards Won </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon happy clients\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-happy.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">8</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Happy Clients </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon puzzle\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-puzzle.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">99</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Bugs Fixed </h4></div></div></div></div></div></div><div class=\"bg-grey-50\" id=\"blog\"><div class=\"container py-16 md:py-20\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> I also like to write</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Check out my latest posts! </h4><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-10 pt-12\"><a class=\"shadow\" href=\"/post\"><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\" style=\"background-image:url(/img/post-01.png);\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\"> Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">How to become a frontend developer</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a></div></div></div><div class=\"container py-16 md:py-20\" id=\"contact\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s a contact form </h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Have Any Questions? </h4><div class=\"w-full sm:w-2/3 mx-auto pt-5 lg:pt-6 text-center\"><p class=\"font-body text-grey-10\">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit condimentum turpis nisl sem, viverra habitasse urna ante lobortis fermentum accumsan. Viverra habitasse urna ante lobortis fermentum accumsan.</p></div><form class=\"w-full sm:w-3/4 mx-auto pt-10\"><div class=\"flex flex-col md:flex-row\"><input class=\"w-full md:w-1/2 mr-3 lg:mr-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"name\" placeholder=\"Name\" type=\"text\"><input class=\"w-full md:w-1/2 mt-6 md:mt-0 md:ml-3 lg:ml-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"email\" placeholder=\"Email\" type=\"text\"></div><textarea class=\"w-full font-body text-black px-4 py-3 border-grey-50 rounded mt-6 md:mt-8\" cols=\"30\" id=\"message\" placeholder=\"Message\" rows=\"10\">\n                        </textarea><button class=\"bg-primary hover:bg-grey-20 font-header font-bold text-lg text-white px-8 py-3 flex justify-center mt-6 rounded items-center uppercase\"> Send <i class=\"bx bx-chevron-right text-3xl relative -right-2\"></i></button></form><div class=\"flex flex-col lg:flex-row pt-16\"><div class=\"w-full lg:w-1/3 border-l-2 border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-phone text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\">My Phone</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\">(+881) 111 222 333</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-envelope text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Email</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> name@mydomain.com</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-map text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Address</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> 123 New York D Block 1100, 2011 USA</p></div></div></div><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-64 md:h-72 lg:h-96\" style=\"background-image:url(/img/map.png);\"></div><div class=\"bg-center bg-cover bg-no-repeat relative py-16 lg:py-24 bg-primary bg-blend-multiply\" style=\"background-image:url(/img/bg-cta.jpg);\"><div class=\"container z-30 relative\"><h3 class=\"font-header text-white text-3xl sm:text-4xl lg:text-5xl uppercase leading-tight text-center tracking-wide\"> Keep <span class=\"font-bold\">up-to-date</span><br> with what I&#39;m up to</h3><form class=\"flex flex-col sm:flex-row justify-center mt-6\"><input class=\"w-full sm:w-2/5 lg:w-1/3 font-body text-black px-4 py-3 sm:py-4 rounded\" id=\"email\" placeholder=\"Give me your Email\" type=\"text\"><button class=\"font-body font-bold px-8 py-3 sm:py-4 bg-yellow hover:bg-primary text-base md:text-lg text-primary hover:text-white uppercase rounded sm:ml-2 mt-2 sm:mt-0 transition-colors focus:ring focus:ring-yellow focus:border-transparent focus:outline-none\"> Join the club</button></form></div></div>", 10);
+
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-primary\"><div class=\"container py-6 flex flex-col sm:flex-row justify-between\"><p class=\"font-body text-white text-center md:text-left\">© Copyright 2021. All right reserved, ATOM.</p><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div></div>", 1);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
+  var _component_decode_effect = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("decode-effect");
+
+  var _component_matrix_effect = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("matrix-effect");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(this.fxDecodeOptions, {
+    loop: true,
+    loopDelay: 5000,
+    direction: 0
+  }), {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_6];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 16
+  /* FULL_PROPS */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_8, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.navItems, function (item) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      onClick: function onClick($event) {
+        return _this.scrollTo(item);
+      },
+      "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item), 9
+    /* TEXT, PROPS */
+    , _hoisted_10), _hoisted_11]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$parent.mobileMenu = true;
+    })
+  }, _hoisted_14)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+      'opacity-100 pointer-events-auto': _ctx.$parent.mobileMenu
+    }, "fixed inset-0 bg-black bg-opacity-70 z-50 min-h-screen lg:hidden transition-opacity opacity-0 pointer-events-none"])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.$parent.mobileMenu = false;
+    }),
+    "class": "absolute top-0 right-0 mt-4 mr-4"
+  }, _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.triggerMobileNavItem('#about');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "About")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.triggerMobileNavItem('#services');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Services")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.triggerMobileNavItem('#portfolio');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Portfolio")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.triggerMobileNavItem('#clients');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Clients")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.triggerMobileNavItem('#work');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Work")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return _ctx.triggerMobileNavItem('#statistics');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Statistics")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return _ctx.triggerMobileNavItem('#blog');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Blog")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    onClick: _cache[9] || (_cache[9] = function ($event) {
+      return _ctx.triggerMobileNavItem('#contact');
+    }),
+    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+  }, "Contact")])])])], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_matrix_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(this.fxMatrixOptions)), null, 16
+  /* FULL_PROPS */
+  ), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(this.fxDecodeOptions, {
+    decodeDelay: 100
+  }), {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_34];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 16
+  /* FULL_PROPS */
+  )]), _hoisted_35])])])]), _hoisted_36]), _hoisted_46]);
 }
 
 /***/ }),
@@ -27294,266 +28140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  id: ""
-};
-var _hoisted_2 = {
-  "x-data": "{\n    triggerNavItem(id) {\n        $scroll(id)\n    },\n    triggerMobileNavItem(id) {\n        $parent.mobileMenu = false;\n        this.triggerNavItem(id)\n    }\n}"
-};
-var _hoisted_3 = {
-  "class": "w-full z-50 top-0 py-3 sm:py-5 absolute"
-};
-var _hoisted_4 = {
-  "class": "container flex justify-between items-center"
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-white text-4xl"
-}, "Sjshovan.com")])], -1
-/* HOISTED */
-);
-
-var _hoisted_6 = {
-  "class": "hidden lg:block"
-};
-var _hoisted_7 = {
-  "class": "flex items-center"
-};
-var _hoisted_8 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_10 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_14 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_16 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_18 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_20 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_22 = {
-  "class": "group pl-6"
-};
-
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block w-full h-0.5 bg-transparent group-hover:bg-yellow"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_24 = {
-  "class": "block lg:hidden"
-};
-
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-menu text-white text-4xl"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_26 = [_hoisted_25];
-var _hoisted_27 = {
-  "class": "w-2/3 md:w-1/3 bg-primary min-h-screen absolute right-0 shadow py-4 px-8"
-};
-
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/img/icon-close.svg",
-  "class": "h-10 w-auto",
-  alt: ""
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_29 = [_hoisted_28];
-var _hoisted_30 = {
-  "class": "flex flex-col mt-8"
-};
-var _hoisted_31 = {
-  "class": "py-2"
-};
-var _hoisted_32 = {
-  "class": "py-2"
-};
-var _hoisted_33 = {
-  "class": "py-2"
-};
-var _hoisted_34 = {
-  "class": "py-2"
-};
-var _hoisted_35 = {
-  "class": "py-2"
-};
-var _hoisted_36 = {
-  "class": "py-2"
-};
-var _hoisted_37 = {
-  "class": "py-2"
-};
-var _hoisted_38 = {
-  "class": "py-2"
-};
-
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div><div class=\"bg-center bg-cover bg-no-repeat relative py-8\" style=\"background-image:url(/img/bg-hero.jpg);\"><div class=\"bg-center bg-cover bg-no-repeat absolute inset-0 z-20 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to\"></div><div class=\"container z-30 relative pt-20 sm:pt-56 lg:pt-64 pb-12 sm:pb-48 lg:pb-48\"><div class=\"flex flex-col lg:flex-row justify-center items-center\"><div class=\"rounded-full border-8 border-primary shadow-xl\"><img src=\"/img/blog-author.jpg\" class=\"h-48 sm:h-56 rounded-full\" alt=\"author\"></div><div class=\"lg:pl-8 pt-8 sm:pt-10 lg:pt-0\"><h1 class=\"font-header text-white text-4xl sm:text-5xl md:text-6xl text-center sm:text-left\"> Hello I&#39;m Sid Shovan!</h1><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-3 sm:pt-5\"><div class=\"flex justify-center sm:justify-start items-center pl-0 md:pl-1\"><p class=\"font-body text-white text-lg uppercase\">Let&#39;s connect</p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-yellow text-3xl\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div></div></div></div></div><div class=\"bg-grey-50\" id=\"about\"><div class=\"container py-16 md:py-20 flex flex-col lg:flex-row items-center\"><div class=\"w-full sm:w-3/4 lg:w-3/5 text-center lg:text-left\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase\"> Who am I?</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6\"> I&#39;m Christy Smith, a Web Designer &amp; Photographer</h4><p class=\"font-body text-grey-20 pt-6 leading-relaxed\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-6\"><div class=\"flex justify-center sm:justify-start items-center\"><p class=\"font-body font-semibold text-grey-20 text-lg uppercase\"> Connect with me</p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-primary text-2xl\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-primary hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-twitter text-primary hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-dribbble text-primary hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-linkedin text-primary hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-instagram text-primary hover:text-yellow text-2xl\"></i></a></div></div></div><div class=\"w-full sm:w-3/4 lg:w-2/5 pl-0 lg:pl-12 pt-10 lg:pt-0\"><div><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\"> HTML &amp; CSS</h4><h3 class=\"font-body font-bold text-primary text-3xl\">85% </h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:85%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">Python </h4><h3 class=\"font-body font-bold text-primary text-3xl\">70% </h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:70%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\">Javascript</h4><h3 class=\"font-body font-bold text-primary text-3xl\">98% </h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:98%;\"></div></div></div><div class=\"pt-6\"><div class=\"flex justify-between items-end\"><h4 class=\"font-body font-semibold text-black uppercase\"> Figma</h4><h3 class=\"font-body font-bold text-primary text-3xl\">91% </h3></div><div class=\"h-3 w-full rounded-full bg-lila mt-2\"><div class=\"h-3 rounded-full bg-primary\" style=\"width:91%;\"></div></div></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"services\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s what I&#39;m good at</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> These are the services Ioffer</h3><div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pt-10 md:pt-12\"><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-development-white.svg\" alt=\"development icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-development-black.svg\" alt=\"development icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> WEB DEVELOPMENT</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-content-white.svg\" alt=\"content marketing icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-content-black.svg\" alt=\"content marketing icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Technical Writing</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-mobile-white.svg\" alt=\"Mobile Application icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-mobile-black.svg\" alt=\"Mobile Application icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Mobile Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-email-white.svg\" alt=\"Email Marketing icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-email-black.svg\" alt=\"Email Marketing icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Email Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-design-white.svg\" alt=\"Theme Design icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-design-black.svg\" alt=\"Theme Design icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Graphic Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img src=\"/img/icon-graphics-white.svg\" alt=\"Graphic Design icon\"></div><div class=\"block group-hover:hidden\"><img src=\"/img/icon-graphics-black.svg\" alt=\"Graphic Design icon\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Web Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"portfolio\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Check out my Portfolio</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I have done with the past</h3><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 pt-12\"><a href=\"/\" class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\"><img src=\"/img/portfolio-apple.jpeg\" class=\"shadow w-full\" alt=\"portfolio image\"></a><a href=\"/\" class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\"><img src=\"/img/portfolio-stripe.jpeg\" class=\"shadow w-full\" alt=\"portfolio image\"></a><a href=\"/\" class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\"><img src=\"/img/portfolio-fedex.jpeg\" class=\"shadow w-full\" alt=\"portfolio image\"></a><a href=\"/\" class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\"><img src=\"/img/portfolio-microsoft.jpeg\" class=\"shadow w-full\" alt=\"portfolio image\"></a></div></div><div class=\"bg-grey-50\" id=\"clients\"><div class=\"container py-16 md:py-20\"><div class=\"w-full sm:w-3/4 lg:w-full mx-auto\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My latest clients</h2><div class=\"flex flex-wrap items-center justify-center pt-4 sm:pt-4\"><span class=\"block m-8\"><img src=\"/img/logo-coca-cola.svg\" alt=\"client logo\" class=\"mx-auto block h-12 w-auto\"></span><span class=\"block m-8\"><img src=\"/img/logo-apple.svg\" alt=\"client logo\" class=\"mx-auto block h-12 w-auto\"></span><span class=\"block m-8\"><img src=\"/img/logo-netflix.svg\" alt=\"client logo\" class=\"mx-auto block h-12 w-auto\"></span><span class=\"block m-8\"><img src=\"/img/logo-amazon.svg\" alt=\"client logo\" class=\"mx-auto block h-12 w-auto\"></span><span class=\"block m-8\"><img src=\"/img/logo-stripe.svg\" alt=\"client logo\" class=\"mx-auto block h-12 w-auto\"></span></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"work\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My work experience</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I did before freelancing</h3><div class=\"w-full lg:w-2/3 mx-auto flex flex-col mt-12 relative\"><span class=\"absolute inset-y-0 left-2/5 ml-10 w-0.5 bg-grey-40 hidden md:block\"></span><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img src=\"/img/logo-spotify.svg\" class=\"w-32 h-auto\" alt=\"company logo\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Apr 2015 - Mar 2018</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Frontend Developer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img src=\"/img/logo-microsoft.svg\" class=\"w-32 h-auto\" alt=\"company logo\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Mar 2018 - September 2019</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Software Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img src=\"/img/logo-fedex.svg\" class=\"w-32 h-auto\" alt=\"company logo\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">October 2019 - Feb 2021</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">DevOps Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div></div></div><div class=\"bg-top bg-cover bg-no-repeat pb-16 md:py-16 lg:py-24\" style=\"background-image:url(/img/experience-figure.png);\" id=\"statistics\"><div class=\"container\"><div class=\"bg-white w-5/6 md:w-11/12 2xl:w-full mx-auto py-16 lg:py-20 xl:py-24 shadow\"><div class=\"grid grid-cols-2 xl:grid-cols-4 gap-5 md:gap-8 xl:gap-5\"><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img src=\"/img/icon-project.svg\" class=\"mx-auto h-12 md:h-20 w-auto\" alt=\"icon project\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\"> 12</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Finished Projects</h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img src=\"/img/icon-award.svg\" class=\"mx-auto h-12 md:h-20 w-auto\" alt=\"icon award\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\"> 3</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Awards Won</h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img src=\"/img/icon-happy.svg\" class=\"mx-auto h-12 md:h-20 w-auto\" alt=\"icon happy clients\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\"> 8</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Happy Clients</h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img src=\"/img/icon-puzzle.svg\" class=\"mx-auto h-12 md:h-20 w-auto\" alt=\"icon puzzle\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\"> 99</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Bugs Fixed</h4></div></div></div></div></div></div><div class=\"bg-grey-50\" id=\"blog\"><div class=\"container py-16 md:py-20\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> I also like to write</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Check out my latest posts!</h4><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-10 pt-12\"><a href=\"/post\" class=\"shadow\"><div style=\"background-image:url(/img/post-01.png);\" class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\">Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">How to become a frontend developer</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a><a href=\"/post\" class=\"shadow\"><div style=\"background-image:url(/img/post-02.png);\" class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\">Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">My personal productivity system</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a><a href=\"/post\" class=\"shadow\"><div style=\"background-image:url(/img/post-03.png);\" class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\">Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">My year in review 2020</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a></div></div></div><div class=\"container py-16 md:py-20\" id=\"contact\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s a contact form</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Have Any Questions?</h4><div class=\"w-full sm:w-2/3 mx-auto pt-5 lg:pt-6 text-center\"><p class=\"font-body text-grey-10\">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit condimentum turpis nisl sem, viverra habitasse urna ante lobortis fermentum accumsan. Viverra habitasse urna ante lobortis fermentum accumsan.</p></div><form class=\"w-full sm:w-3/4 mx-auto pt-10\"><div class=\"flex flex-col md:flex-row\"><input class=\"w-full md:w-1/2 mr-3 lg:mr-5 font-body text-black px-4 py-3 border-grey-50 rounded\" placeholder=\"Name\" type=\"text\" id=\"name\"><input class=\"w-full md:w-1/2 mt-6 md:mt-0 md:ml-3 lg:ml-5 font-body text-black px-4 py-3 border-grey-50 rounded\" placeholder=\"Email\" type=\"text\" id=\"email\"></div><textarea class=\"w-full font-body text-black px-4 py-3 border-grey-50 rounded mt-6 md:mt-8\" placeholder=\"Message\" id=\"message\" cols=\"30\" rows=\"10\"></textarea><button class=\"bg-primary hover:bg-grey-20 font-header font-bold text-lg text-white px-8 py-3 flex justify-center mt-6 rounded items-center uppercase\"> Send <i class=\"bx bx-chevron-right text-3xl relative -right-2\"></i></button></form><div class=\"flex flex-col lg:flex-row pt-16\"><div class=\"w-full lg:w-1/3 border-l-2 border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-phone text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Phone</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> (+881) 111 222 333</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-envelope text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Email</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> name@mydomain.com</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-map text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Address</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> 123 New York D Block 1100, 2011 USA</p></div></div></div><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-64 md:h-72 lg:h-96\" style=\"background-image:url(/img/map.png);\"></div><div class=\"bg-center bg-cover bg-no-repeat relative py-16 lg:py-24 bg-primary bg-blend-multiply\" style=\"background-image:url(/img/bg-cta.jpg);\"><div class=\"container z-30 relative\"><h3 class=\"font-header text-white text-3xl sm:text-4xl lg:text-5xl uppercase leading-tight text-center tracking-wide\"> Keep <span class=\"font-bold\">up-to-date</span> <br> with what I&#39;m up to</h3><form class=\"flex flex-col sm:flex-row justify-center mt-6\"><input class=\"w-full sm:w-2/5 lg:w-1/3 font-body text-black px-4 py-3 sm:py-4 rounded\" type=\"text\" id=\"email\" placeholder=\"Give me your Email\"><button class=\"font-body font-bold px-8 py-3 sm:py-4 bg-yellow hover:bg-primary text-base md:text-lg text-primary hover:text-white uppercase rounded sm:ml-2 mt-2 sm:mt-0 transition-colors focus:ring focus:ring-yellow focus:border-transparent focus:outline-none\">Join the club</button></form></div></div></div><div class=\"bg-primary\"><div class=\"container py-6 flex flex-col sm:flex-row justify-between\"><p class=\"font-body text-white text-center md:text-left\">© Copyright 2021. All right reserved, ATOM.</p><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a href=\"/\" class=\"pl-4\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div></div>", 2);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.triggerNavItem('#about');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "About"), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.triggerNavItem('#services');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Services"), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.triggerNavItem('#portfolio');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Portfolio"), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.triggerNavItem('#clients');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Clients"), _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[4] || (_cache[4] = function ($event) {
-      return _ctx.triggerNavItem('#work');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Work"), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.triggerNavItem('#statistics');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Statistics"), _hoisted_19]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[6] || (_cache[6] = function ($event) {
-      return _ctx.triggerNavItem('#blog');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Blog"), _hoisted_21]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.triggerNavItem('#contact');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Contact"), _hoisted_23])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[8] || (_cache[8] = function ($event) {
-      return _ctx.$parent.mobileMenu = true;
-    })
-  }, _hoisted_26)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["fixed inset-0 bg-black bg-opacity-70 z-50 min-h-screen lg:hidden transition-opacity opacity-0 pointer-events-none", {
-      'opacity-100 pointer-events-auto': _ctx.$parent.mobileMenu
-    }])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "absolute top-0 right-0 mt-4 mr-4",
-    onClick: _cache[9] || (_cache[9] = function ($event) {
-      return _ctx.$parent.mobileMenu = false;
-    })
-  }, _hoisted_29), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[10] || (_cache[10] = function ($event) {
-      return _ctx.triggerMobileNavItem('#about');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "About")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[11] || (_cache[11] = function ($event) {
-      return _ctx.triggerMobileNavItem('#services');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Services")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[12] || (_cache[12] = function ($event) {
-      return _ctx.triggerMobileNavItem('#portfolio');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Portfolio")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[13] || (_cache[13] = function ($event) {
-      return _ctx.triggerMobileNavItem('#clients');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Clients")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[14] || (_cache[14] = function ($event) {
-      return _ctx.triggerMobileNavItem('#work');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Work")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[15] || (_cache[15] = function ($event) {
-      return _ctx.triggerMobileNavItem('#statistics');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Statistics")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[16] || (_cache[16] = function ($event) {
-      return _ctx.triggerMobileNavItem('#blog');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Blog")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    onClick: _cache[17] || (_cache[17] = function ($event) {
-      return _ctx.triggerMobileNavItem('#contact');
-    }),
-    "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
-  }, "Contact")])])])], 2
-  /* CLASS */
-  )]), _hoisted_39]);
+  return null;
 }
 
 /***/ }),
@@ -27609,7 +28197,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Welcome"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_ctx.canLogin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
-    href: _ctx.route('dashboard'),
+    href: _ctx.route('admin.dashboard'),
     "class": "text-sm text-gray-700 underline"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27691,8 +28279,11 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
     return "".concat(_title, " - ").concat(appName);
   },
   resolve: function resolve(name) {
-    var page = __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$")("./".concat(name, ".vue"))["default"]; //page.layout = AppLayout || undefined;
+    var page = __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$")("./".concat(name, ".vue"))["default"];
 
+    if (page.layout === undefined) {
+      page.layout = _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_3__["default"];
+    }
 
     return page;
   },
@@ -27701,7 +28292,7 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
         app = _ref.app,
         props = _ref.props,
         plugin = _ref.plugin;
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
+    window.$app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
       render: function render() {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(app, props);
       }
@@ -27710,10 +28301,11 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
         route: route
       }
     }).mount(el);
+    return window.$app;
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
-  color: '#4B5563'
+  color: '#ded044'
 });
 
 /***/ }),
@@ -27725,6 +28317,7 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window._h = (__webpack_require__(/*! ./helpers */ "./resources/js/helpers.js")["default"]);
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -27746,6 +28339,51 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function ensureArray(object) {
+  return Array.isArray(object) ? object : [];
+}
+
+function asyncDelay(ms) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, ms);
+  });
+}
+
+function delay(ms) {
+  setTimeout(function () {}, ms);
+}
+
+function isString(x) {
+  return Object.prototype.toString.call(x) === "[object String]";
+}
+
+var getChildrenTextContent = function getChildrenTextContent(children) {
+  return children.map(function (node) {
+    return isString(node.children) ? node.children : getChildrenTextContent(node.children);
+  }).join('');
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  ensureArray: ensureArray,
+  asyncDelay: asyncDelay,
+  delay: delay,
+  isString: isString,
+  getChildrenTextContent: getChildrenTextContent
+});
 
 /***/ }),
 
@@ -51384,6 +52022,770 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  define(Gp, "constructor", GeneratorFunctionPrototype);
+  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  });
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  define(Gp, iteratorSymbol, function() {
+    return this;
+  });
+
+  define(Gp, "toString", function() {
+    return "[object Generator]";
+  });
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : 0
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/side-channel/index.js":
 /*!********************************************!*\
   !*** ./node_modules/side-channel/index.js ***!
@@ -51538,6 +52940,62 @@ exports["default"] = (sfc, props) => {
     return target;
 };
 
+
+/***/ }),
+
+/***/ "./resources/js/Components/DecodeEffect.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/Components/DecodeEffect.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DecodeEffect_vue_vue_type_template_id_3180416a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DecodeEffect.vue?vue&type=template&id=3180416a */ "./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a");
+/* harmony import */ var _DecodeEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DecodeEffect.vue?vue&type=script&lang=js */ "./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DecodeEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DecodeEffect_vue_vue_type_template_id_3180416a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/DecodeEffect.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/Components/MatrixEffect.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/Components/MatrixEffect.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MatrixEffect_vue_vue_type_template_id_922f4906__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MatrixEffect.vue?vue&type=template&id=922f4906 */ "./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906");
+/* harmony import */ var _MatrixEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MatrixEffect.vue?vue&type=script&lang=js */ "./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MatrixEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MatrixEffect_vue_vue_type_template_id_922f4906__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/MatrixEffect.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 
 /***/ }),
 
@@ -52651,6 +54109,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Home.vue":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/Home.vue ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Home_vue_vue_type_template_id_6a63e488__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=6a63e488 */ "./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488");
+/* harmony import */ var _Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js */ "./resources/js/Pages/Home.vue?vue&type=script&lang=js");
+/* harmony import */ var _var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Home_vue_vue_type_template_id_6a63e488__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Home.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/PrivacyPolicy.vue":
 /*!**********************************************!*\
   !*** ./resources/js/Pages/PrivacyPolicy.vue ***!
@@ -53096,6 +54582,38 @@ if (false) {}
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DecodeEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DecodeEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DecodeEffect.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MatrixEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MatrixEffect_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MatrixEffect.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=script&lang=js");
+ 
 
 /***/ }),
 
@@ -53659,6 +55177,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Home.vue?vue&type=script&lang=js":
+/*!*************************************************************!*\
+  !*** ./resources/js/Pages/Home.vue?vue&type=script&lang=js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Home.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/PrivacyPolicy.vue?vue&type=script&lang=js":
 /*!**********************************************************************!*\
   !*** ./resources/js/Pages/PrivacyPolicy.vue?vue&type=script&lang=js ***!
@@ -53912,6 +55446,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Welcome_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Welcome.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=script&lang=js");
  
+
+/***/ }),
+
+/***/ "./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a":
+/*!********************************************************************************!*\
+  !*** ./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DecodeEffect_vue_vue_type_template_id_3180416a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DecodeEffect_vue_vue_type_template_id_3180416a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DecodeEffect.vue?vue&type=template&id=3180416a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/DecodeEffect.vue?vue&type=template&id=3180416a");
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906":
+/*!********************************************************************************!*\
+  !*** ./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906 ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MatrixEffect_vue_vue_type_template_id_922f4906__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MatrixEffect_vue_vue_type_template_id_922f4906__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MatrixEffect.vue?vue&type=template&id=922f4906 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/MatrixEffect.vue?vue&type=template&id=922f4906");
+
 
 /***/ }),
 
@@ -54555,6 +56121,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488 ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_template_id_6a63e488__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Home_vue_vue_type_template_id_6a63e488__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Home.vue?vue&type=template&id=6a63e488 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Home.vue?vue&type=template&id=6a63e488");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/PrivacyPolicy.vue?vue&type=template&id=41527301":
 /*!****************************************************************************!*\
   !*** ./resources/js/Pages/PrivacyPolicy.vue?vue&type=template&id=41527301 ***!
@@ -55057,6 +56639,7 @@ var map = {
 	"./Auth/TwoFactorChallenge.vue": "./resources/js/Pages/Auth/TwoFactorChallenge.vue",
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
+	"./Home.vue": "./resources/js/Pages/Home.vue",
 	"./PrivacyPolicy.vue": "./resources/js/Pages/PrivacyPolicy.vue",
 	"./Profile/Partials/DeleteUserForm.vue": "./resources/js/Pages/Profile/Partials/DeleteUserForm.vue",
 	"./Profile/Partials/LogoutOtherBrowserSessionsForm.vue": "./resources/js/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue",
@@ -55180,6 +56763,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

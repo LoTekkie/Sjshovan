@@ -11,43 +11,39 @@ module.exports = {
         './resources/js/**/*.vue',
     ],
     theme:  {
-        fontFamily: {
-            header: ['Raleway', "sans-serif"],
-            body: ['Open Sans', "sans-serif"]
-        },
-        screens: {
-            xs: "375px",
-            ...defaultTheme.screens
-        },
-        colors: {
-            transparent: "transparent",
-            primary: "#3d4faf",
-            secondary: "#252426",
-            white: '#ffffff',
-            black: "#000000",
-            yellow: "#f9e71c",
-            lila: "#e6e5ec",
-            "grey-10": "#6c6b6d",
-            "grey-20": "#7c7c7c",
-            "grey-30": "#919091",
-            "grey-40": "#929293",
-            "grey-50": "#f4f3f8",
-            "grey-60": "#edebf6",
-            "grey-70": "#d8d8d8",
-            "hero-gradient-from": "rgba(66,82,174,0.95)",
-            "hero-gradient-to": "rgba(43,61,144,0.93)",
-            "blog-gradient-from": "#8f9098",
-            "blog-gradient-to": "#222222"
-        },
-        container: {
-            center: true,
-            padding: "1rem"
-        },
-        shadows: {
-            default: '0 2px 18px rgba(0, 0, 0, 0.06)',
-            md: '0 -3px 36px rgba(0, 0, 0, 0.12)',
-        },
         extend: {
+            colors: {
+                transparent: "transparent",
+                primary: "#3d4faf",
+                secondary: "#252426",
+                matrix: "#4865ff",
+                white: '#ffffff',
+                black: "#000000",
+                yellow: "#f9e71c",
+                lila: "#e6e5ec",
+                "grey-10": "#6c6b6d",
+                "grey-20": "#7c7c7c",
+                "grey-30": "#919091",
+                "grey-40": "#929293",
+                "grey-50": "#f4f3f8",
+                "grey-60": "#edebf6",
+                "grey-70": "#d8d8d8",
+                "hero-gradient-from": "rgba(55,61,123,0.5)",
+                "hero-gradient-to": "rgba(43,61,144,0)",
+                "blog-gradient-from": "#8f9098",
+                "blog-gradient-to": "#222222"
+            },
+            screens: {
+                xs: "375px"
+            },
+            container: {
+                center: true,
+                padding: "1rem"
+            },
+            shadows: {
+                default: '0 2px 18px rgba(0, 0, 0, 0.06)',
+                md: '0 -3px 36px rgba(0, 0, 0, 0.12)',
+            },
             spacing: {
                 "13": '3.25rem',
                 "15": '3.75rem',
@@ -88,7 +84,10 @@ module.exports = {
                 "204": "51rem"
             },
             zIndex: {
-                "-1": "-1"
+                '-1': '-1',
+                '-10': '-10',
+                '75': 75,
+                '100': 100,
             },
             inset: {
                 '2/5': '40%'
@@ -100,7 +99,6 @@ module.exports = {
                 '1/4-screen': '25vh',
                 '1/2-screen': '50vh',
                 '3/4-screen': '75vh'
-
             }
         }
     },

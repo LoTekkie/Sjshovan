@@ -79,7 +79,7 @@
                 return this.resolveThemeClass("label");
             },
             classWrap() {
-                return this.ensureArray(this.theme.wrap)
+                return _h.ensureArray(this.theme.wrap)
             }
         },
         methods: {
@@ -87,15 +87,12 @@
                 this.isToggled = !this.isToggled;
                 this.options.callbacks.onClick(this)
             },
-            ensureArray(object) {
-                return Array.isArray(object) ? object : []
-            },
             resolveThemeClass(context) {
                 let arr = this.isToggled ?
-                    this.ensureArray(this.theme.on[context])
+                    _h.ensureArray(this.theme.on[context])
                     :
-                    this.ensureArray(this.theme.off[context]);
-                return window._.union(arr, this.ensureArray(this.theme[context]))
+                    _h.ensureArray(this.theme.off[context]);
+                return window._.union(arr, _h.ensureArray(this.theme[context]))
             }
         },
         beforeMount() {

@@ -17,14 +17,15 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="antialiased">
         @inertia
 
         @env ('local')
             <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
         @endenv
-    </body>
 
-    <!-- Crisp -->
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="394850aa-11ac-475c-b252-e21b3af92213";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+        @if(Arr::get($page, 'props.crisp'))
+            <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="394850aa-11ac-475c-b252-e21b3af92213";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+        @endif
+    </body>
 </html>

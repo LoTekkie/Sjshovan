@@ -17,17 +17,20 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => {
         let page = require(`./Pages/${name}.vue`).default;
-        //page.layout = AppLayout || undefined;
+        if (page.layout === undefined) {
+            page.layout = AppLayout;
+        }
         return page;
     },
     setup({ el, app, props, plugin }) {
-        return createApp({ render: () => h(app, props) })
+        window.$app = createApp({ render: () => h(app, props) })
             .use(plugin)
             .component("Link", Link)
             .component("Head", Head)
             .mixin({ methods: { route } })
             .mount(el);
+        return window.$app;
     }
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({ color: '#ded044' });
