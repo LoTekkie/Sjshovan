@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <div class="w-full z-50 top-0 py-3 sm:py-5 absolute">
-      <div class="container flex justify-between items-center ">
+<!--  <vue-particles v-bind="this.fxParticlesOptions" :key="this.fxParticlesOptions.key" class="w-full -z-10 absolute"></vue-particles>-->
+  <div id="home" ref="wrap" :style="{'margin-top': this.isNavHeaderSticky ? `-${this.c_navHeight}px` : '0'}">
+    <!--nav-->
+    <div class="w-full z-50 top-0 py-3 sm:py-5 absolute" ref="nav" :class="{'sticky':this.isNavHeaderSticky}">
+      <div v-if="this.isNavHeaderSticky">
+        <matrix-effect v-bind="this.fxMatrixOptions" :theme="{wrap: ['-z-10']}"></matrix-effect>
+        <div class="bg-center bg-cover bg-no-repeat absolute inset-0 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to -z-10"></div>
+      </div>
+      <div class="container flex justify-between items-center">
         <div class=" flex truncate h-16 justify-center items-center flex-column nowrap">
           <a href="/">
             <span class="text-white text-4xl">
@@ -9,91 +15,59 @@
             </span>
           </a>
         </div>
-        <div class="hidden lg:block truncate max-h-10">
+        <div class="hidden lg:block">
           <ul class="flex items-center">
-            <li  v-for="item in this.navItems" class="group pl-6">
-              <span @click="this.scrollTo(item)"
+            <li v-for="item in this.navItems.slice(0, -1)" class="group pl-6">
+              <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
                     class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">
-                {{ item }}
+                <decode-effect v-if="item.hovered" v-bind="this.fxDecodeOptions" :direction="1" :startDelay="0" :scramble="false" :decodeDelay="100">{{ item.href }}</decode-effect>
+                <span v-if="!item.hovered">{{ item.href }}</span>
+                <span class="block w-full h-0.5 bg-transparent group-hover:bg-orange mt-1"></span>
               </span>
-              <span class="block w-full h-0.5 bg-transparent group-hover:bg-yellow"></span>
+            </li>
+            <li v-if="this.isNavHeaderSticky" v-for="item in this.navItems.slice(-1)"  class="group pl-6">
+              <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
+                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4  rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl mb-2">
+                <font-awesome-icon icon="arrow-circle-up" size="lg" class="absolute" />
+                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}" />
+              </span>
             </li>
           </ul>
         </div>
-        <div class="block lg:hidden">
-          <button @click="$parent.mobileMenu = true">
-            <i class='bx bx-menu text-white text-4xl'></i>
+        <div class="flex flex-row flex-nowrap lg:hidden">
+          <button @click="this.mobileMenu = true">
+            <span class="flex flex-row flex-nowrap justify-center items-center">
+              <i class='bx bx-menu text-white text-4xl'></i>
+            </span>
           </button>
+           <span v-if="this.isNavHeaderSticky" v-for="item in this.navItems.slice(-1)"  class="group pl-2">
+              <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
+                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4  rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl">
+                <font-awesome-icon icon="arrow-circle-up" size="lg" class="absolute" />
+                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}" />
+              </span>
+            </span>
         </div>
       </div>
     </div>
-    <div :class="{ 'opacity-100 pointer-events-auto': $parent.mobileMenu }"
+    <!--mobile-->
+    <div :class="{ 'opacity-100 pointer-events-auto': this.mobileMenu }"
          class="fixed inset-0 bg-black bg-opacity-70 z-50 min-h-screen lg:hidden transition-opacity opacity-0 pointer-events-none">
-      <div class="w-2/3 md:w-1/3 bg-primary min-h-screen absolute right-0 shadow py-4 px-8">
-        <button @click="$parent.mobileMenu = false" class="absolute top-0 right-0 mt-4 mr-4">
+       <div class="bg-center bg-cover bg-no-repeat absolute inset-0 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to "></div>
+      <div class="w-2/3 md:w-1/3 bg-primary-darker min-h-screen absolute right-0 shadow py-4 px-8">
+        <button @click="this.mobileMenu = false" class="absolute top-0 right-0 mt-4 mr-4">
           <img alt="" class="h-10 w-auto" src="/img/icon-close.svg">
         </button>
-        <ul class="flex flex-col mt-8">
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#about')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">About</span>
-
+        <ul class="flex flex-col mt-12">
+          <li v-for="item in this.navItems.slice(0, -1)" class="group py-2 cursor-pointer hover:text-2xl"  @click="() => { this.scrollTo(item.href); this.mobileMenu = false; }">
+            <span class="font-header font-semibold text-white uppercase pt-0.5">{{ item.href }}</span>
+            <span class="block h-0.5 bg-transparent group-hover:bg-orange mt-1"></span>
           </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#services')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Services</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#portfolio')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Portfolio</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#clients')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Clients</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#work')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Work</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#statistics')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Statistics</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#blog')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Blog</span>
-
-          </li>
-
-          <li class="py-2">
-
-                    <span @click="triggerMobileNavItem('#contact')"
-                          class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">Contact</span>
-
-          </li>
-
         </ul>
       </div>
     </div>
+    <!--/mobile-->
+    <!--/nav-->
     <div>
       <div class="bg-center bg-cover bg-no-repeat relative py-8">
         <matrix-effect v-bind="this.fxMatrixOptions"></matrix-effect>
@@ -104,31 +78,31 @@
               <img alt="author" class="h-48 sm:h-56 rounded-full" src="/img/me.jpg">
             </div>
             <div class="lg:pl-8 pt-8 sm:pt-10 lg:pt-0">
-              <h1 class="font-header text-white text-4xl sm:text-5xl md:text-6xl text-center truncate max-h-10 md:max-h-16">
-                <decode-effect v-bind="this.fxDecodeOptions" :decodeDelay="100">Hi, I'm Sid Shovan!</decode-effect>
+              <h1 class="font-header text-white text-4xl sm:text-5xl md:text-6xl text-center truncate md:max-h-16">
+                <decode-effect v-bind="this.fxDecodeOptions" :decodeDelay="50">Hi, I'm Sid Shovan!</decode-effect>
               </h1>
+              <ul class="font-body text-white pt-6 list-disc ml-6 text-base">
+                <li>Full-stack developer specializing in the Laravel framework.</li>
+                <li>Proven leader who fosters collaborative and supportive team environments.</li>
+                <li>Quickly learns new software and hardware technologies.</li>
+                <li>Professional, skilled, and passionate.</li>
+              </ul>
               <div class="flex flex-col sm:flex-row justify-center lg:justify-start pt-3 sm:pt-5">
-                <div class="flex justify-center sm:justify-start items-center pl-0 md:pl-1">
+                <div class="flex justify-center sm:justify-start items-center">
                   <p class="font-body text-white text-lg uppercase"></p>
                   <div class="hidden sm:block">
-                    <i class='bx bx-chevron-right text-yellow text-3xl'></i>
+                    <i class='bx bx-chevron-right text-orange text-3xl -ml-1'></i>
                   </div>
                 </div>
                 <div class="flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2">
                   <a href="/">
-                    <i class='bx bxl-facebook-square text-white hover:text-yellow text-2xl'></i>
+                    <i class='bx bxl-facebook-square text-white hover:text-orange text-2xl'></i>
                   </a>
                   <a class="pl-4" href="/">
-                    <i class='bx bxl-twitter text-white hover:text-yellow text-2xl'></i>
+                    <i class='bx bxl-twitter text-white hover:text-orange text-2xl'></i>
                   </a>
                   <a class="pl-4" href="/">
-                    <i class='bx bxl-dribbble text-white hover:text-yellow text-2xl'></i>
-                  </a>
-                  <a class="pl-4" href="/">
-                    <i class='bx bxl-linkedin text-white hover:text-yellow text-2xl'></i>
-                  </a>
-                  <a class="pl-4" href="/">
-                    <i class='bx bxl-instagram text-white hover:text-yellow text-2xl'></i>
+                    <i class='bx bxl-linkedin text-white hover:text-orange text-2xl'></i>
                   </a>
                 </div>
               </div>
@@ -136,87 +110,19 @@
           </div>
         </div>
       </div>
-      <div class="bg-grey-50" id="about">
+      <div class="bg-grey-50" id="skills">
         <div class="container py-16 md:py-20 flex flex-col lg:flex-row items-center">
           <div class="w-full sm:w-3/4 lg:w-3/5 text-center lg:text-left">
             <h2 class="font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase">
-              Who am I?
+              Skills
             </h2>
-            <h4 class="font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6">
-              I'm Christy Smith, a Web Designer & Photographer
-            </h4>
-            <p class="font-body text-grey-20 pt-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="font-body text-grey-20 pt-6 leading-relaxed">
+
+            </p>
             <div class="flex flex-col sm:flex-row justify-center lg:justify-start pt-6">
-              <div class="flex justify-center sm:justify-start items-center">
-                <p class="font-body font-semibold text-grey-20 text-lg uppercase">
-                  Connect with me
-                </p>
-                <div class="hidden sm:block">
-                  <i class='bx bx-chevron-right text-primary text-2xl'></i>
-                </div>
-              </div>
-              <div class="flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2">
-                <a href="/">
-                  <i class='bx bxl-facebook-square text-primary hover:text-yellow text-2xl'></i>
-                </a>
-                <a class="pl-4" href="/">
-                  <i class='bx bxl-twitter text-primary hover:text-yellow text-2xl'></i>
-                </a>
-                <a class="pl-4" href="/">
-                  <i class='bx bxl-dribbble text-primary hover:text-yellow text-2xl'></i>
-                </a>
-                <a class="pl-4" href="/">
-                  <i class='bx bxl-linkedin text-primary hover:text-yellow text-2xl'></i>
-                </a>
-                <a class="pl-4" href="/">
-                  <i class='bx bxl-instagram text-primary hover:text-yellow text-2xl'></i>
-                </a>
-              </div>
             </div>
           </div>
           <div class="w-full sm:w-3/4 lg:w-2/5 pl-0 lg:pl-12 pt-10 lg:pt-0">
-            <div>
-              <div class="flex justify-between items-end">
-                <h4 class="font-body font-semibold text-black uppercase">HTML & CSS</h4>
-                <h3 class="font-body font-bold text-primary text-3xl">85%</h3>
-              </div>
-              <div class="h-3 w-full rounded-full bg-lila mt-2">
-                <div class="h-3 rounded-full bg-primary" style="width: 85%;"></div>
-              </div>
-            </div>
-            <div class="pt-6">
-              <div class="flex justify-between items-end">
-                <h4 class="font-body font-semibold text-black uppercase">Python</h4>
-                <h3 class="font-body font-bold text-primary text-3xl">70%</h3>
-              </div>
-              <div class="h-3 w-full rounded-full bg-lila mt-2">
-                <div class="h-3 rounded-full bg-primary" style="width: 70%;"></div>
-              </div>
-            </div>
-            <div class="pt-6">
-              <div class="flex justify-between items-end">
-                <h4 class="font-body font-semibold text-black uppercase">Javascript</h4>
-                <h3 class="font-body font-bold text-primary text-3xl">98%</h3>
-              </div>
-              <div class="h-3 w-full rounded-full bg-lila mt-2">
-                <div class="h-3 rounded-full bg-primary" style="width: 98%;"></div>
-              </div>
-            </div>
-            <div class="pt-6">
-              <div class="flex justify-between items-end">
-                <h4 class="font-body font-semibold text-black uppercase">Figma</h4>
-                <h3 class="font-body font-bold text-primary text-3xl">91%</h3>
-              </div>
-              <div class="h-3 w-full rounded-full bg-lila mt-2">
-                <div class="h-3 rounded-full bg-primary" style="width: 91%;"></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -681,10 +587,12 @@
 </template>
 
 <script>
-  import {defineComponent, computed} from 'vue'
+  import { defineComponent } from 'vue'
   import PageLayout from "@/Layouts/PageLayout";
   import DecodeEffect from "@/Components/DecodeEffect";
   import MatrixEffect from "@/Components/MatrixEffect";
+
+  let stickyOffset = 0;
 
   export default defineComponent({
     layout: null,
@@ -697,6 +605,8 @@
 
     data() {
       return {
+        mobileMenu: false,
+        isNavHeaderSticky: false,
         fxDecodeOptions: {
           enabled: true,
           direction: 0,
@@ -708,7 +618,7 @@
           decodeChars: "10",
           theme: {
             chars: {
-              encoded: ["font-body", "text-matrix"]
+              encoded: ["font-body", "text-primary-lightest"]
             }
           }
         },
@@ -718,32 +628,80 @@
           font: "15pt sans-serif",
           availChars: "10",
           getCharStyle() {
-            return "#4865ff"
+            return "#003F7D"
           }
         },
+        fxParticlesOptions: {
+           particleOpacity: 0.7,
+            particlesNumber: 10,
+            particleSize: 4,
+            linesWidth: 1,
+            lineLinked: true,
+            lineOpacity: 0.4,
+            linesDistance: 150,
+            moveSpeed: 3,
+            hoverEffect: false,
+            clickEffect: false,
+            color: '#003F7D',
+            linesColor: '#494949',
+            shapeType: 'triangle',
+            hoverMode: 'grab',
+            clickMode: 'repulse',
+            key: 0
+        },
         navItems: [
-          "about",
-          "services",
-          "portfolio",
-          "clients",
-          "work",
-          "statistics",
-          "blog",
-          "contact"
+          { href: "skills", hovered: false },
+          { href: "services", hovered: false },
+          { href: "portfolio", hovered: false },
+          { href: "work", hovered: false },
+          { href: "blog", hovered: false },
+          { href: "contact", hovered: false },
+          { href: "home", hovered: false }
+        ],
+        skills: [
+          "HTML", "CSS", "SASS", "LESS", "Javascript", "JQuery", "Typescript", "Vue.js", "Inertia.js", "PHP", "Laravel",
+          "WordPress", "Python", "Django", "C#", "MySQL", "TailwindCSS", "Bootstrap", "Foundation"
         ]
-
       }
+    },
+
+    computed: {
+      c_navHeight() { return this.$refs.nav.clientHeight; }
     },
 
     methods: {
       scrollTo(id) {
         let $el = document.getElementById(`${id}`);
+        let offset = $el.id == this.navItems.slice(-1)[0].href ? 0 : 100;
         window.scroll({
-          top: $el.offsetTop,
+          top: $el.offsetTop - offset,
           left: 0,
           behavior: 'smooth'
         })
+      },
+
+      clearNavItemsHovered() {
+         this.navItems.forEach(function (item) {
+            item.hovered = false;
+          });
+      },
+
+      onNavItemMouseLeave(e) {
+        setTimeout(this.clearNavItemsHovered, 10);
+      },
+
+      handleScroll(e) {
+        this.isNavHeaderSticky = window.pageYOffset > stickyOffset;
       }
+    },
+
+    mounted() {
+      stickyOffset = this.$refs.nav.offsetTop;
+      window.addEventListener('scroll', this.handleScroll);
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleScroll);
     }
   })
 </script>
