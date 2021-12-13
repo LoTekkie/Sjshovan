@@ -27,9 +27,9 @@
             </li>
             <li v-if="this.isNavHeaderSticky" v-for="item in this.navItems.slice(-1)"  class="group pl-6">
               <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
-                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4  rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl mb-2">
-                <font-awesome-icon icon="arrow-circle-up" size="lg" class="absolute" />
-                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}" />
+                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4 rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl mb-2">
+                <font-awesome-icon icon="arrow-circle-up" size="lg" class="absolute"/>
+                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}"  v-mounted="this.pingOnce" />
               </span>
             </li>
           </ul>
@@ -42,9 +42,9 @@
           </button>
            <span v-if="this.isNavHeaderSticky" v-for="item in this.navItems.slice(-1)"  class="group pl-2">
               <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
-                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4  rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl">
+                    class="flex justify-center items-center bg-primary-lighter border-primary-lighter border-4 rounded-full items-center font-header font-semibold text-white uppercase cursor-pointer text-xl">
                 <font-awesome-icon icon="arrow-circle-up" size="lg" class="absolute" />
-                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}" />
+                <font-awesome-icon icon="arrow-circle-up" size="lg" :class="{'animate-ping':item.hovered}"  v-mounted="this.pingOnce" />
               </span>
             </span>
         </div>
@@ -688,16 +688,28 @@
         })
       },
 
+      test($e) {
+        console.log($e);
+      },
       clearNavItemsHovered() {
          this.navItems.forEach(function (item) {
             item.hovered = false;
           });
       },
 
+      async pingOnce($el) {
+        $el.classList.add('animate-ping');
+        await _h.asyncDelay(500)
+          .then((r) => {
+            if ( ! this.navItems.slice(-1).pop().hovered ) {
+               $el.classList.remove('animate-ping');
+            }
+          });
+      },
+
       async onNavItemMouseLeave(e) {
         await _h.asyncDelay(100)
-          .then(this.clearNavItemsHovered)
-
+          .then(this.clearNavItemsHovered);
       },
 
       handleScroll(e) {

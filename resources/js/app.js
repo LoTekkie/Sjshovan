@@ -36,9 +36,20 @@ createInertiaApp({
       .component("Link", Link)
       .component("Head", Head)
       .mixin({ methods: { route } })
-      .provide('lodash', window._);
+      .provide('lodash', window._)
+      .directive('mounted', {
+        mounted($el, binding, vnode, prevVnode) {
+          let callback = binding.value;
+          if (binding.arg !== null) {
+            callback($el, binding.arg)
+          } else {
+            callback($el)
+          }
+        }
+      });
       //custom globals
       $app.config.globalProperties.$_ = window._;
+      $app.config.globalProperties.$_h = window._h;
       window.$app = $app.mount(el);
       return window.$app;
     }

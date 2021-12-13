@@ -31412,12 +31412,15 @@ var stickyOffset = 0;
         behavior: 'smooth'
       });
     },
+    test: function test($e) {
+      console.log($e);
+    },
     clearNavItemsHovered: function clearNavItemsHovered() {
       this.navItems.forEach(function (item) {
         item.hovered = false;
       });
     },
-    onNavItemMouseLeave: function onNavItemMouseLeave(e) {
+    pingOnce: function pingOnce($el) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -31425,15 +31428,39 @@ var stickyOffset = 0;
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return _h.asyncDelay(100).then(_this.clearNavItemsHovered);
+                $el.classList.add('animate-ping');
+                _context.next = 3;
+                return _h.asyncDelay(500).then(function (r) {
+                  if (!_this.navItems.slice(-1).pop().hovered) {
+                    $el.classList.remove('animate-ping');
+                  }
+                });
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
+      }))();
+    },
+    onNavItemMouseLeave: function onNavItemMouseLeave(e) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _h.asyncDelay(100).then(_this2.clearNavItemsHovered);
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     },
     handleScroll: function handleScroll(e) {
@@ -36015,6 +36042,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_font_awesome_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("font-awesome-icon");
 
+  var _directive_mounted = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDirective)("mounted");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <vue-particles v-bind=\"this.fxParticlesOptions\" :key=\"this.fxParticlesOptions.key\" class=\"w-full -z-10 absolute\"></vue-particles>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "home",
     ref: "wrap",
@@ -36100,7 +36129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       icon: "arrow-circle-up",
       size: "lg",
       "class": "absolute"
-    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
       icon: "arrow-circle-up",
       size: "lg",
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
@@ -36108,7 +36137,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })
     }, null, 8
     /* PROPS */
-    , ["class"])], 40
+    , ["class"]), [[_directive_mounted, _this.pingOnce]])], 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_15)]);
   }), 256
@@ -36135,7 +36164,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       icon: "arrow-circle-up",
       size: "lg",
       "class": "absolute"
-    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_font_awesome_icon, {
       icon: "arrow-circle-up",
       size: "lg",
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
@@ -36143,7 +36172,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })
     }, null, 8
     /* PROPS */
-    , ["class"])], 40
+    , ["class"]), [[_directive_mounted, _this.pingOnce]])], 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_20)]);
   }), 256
@@ -38602,9 +38631,20 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
       methods: {
         route: route
       }
-    }).provide('lodash', window._); //custom globals
+    }).provide('lodash', window._).directive('mounted', {
+      mounted: function mounted($el, binding, vnode, prevVnode) {
+        var callback = binding.value;
+
+        if (binding.arg !== null) {
+          callback($el, binding.arg);
+        } else {
+          callback($el);
+        }
+      }
+    }); //custom globals
 
     $app.config.globalProperties.$_ = window._;
+    $app.config.globalProperties.$_h = window._h;
     window.$app = $app.mount(el);
     return window.$app;
   }
