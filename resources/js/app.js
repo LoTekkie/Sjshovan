@@ -29,14 +29,17 @@ createInertiaApp({
     return page;
   },
   setup({ el, app, props, plugin }) {
-    window.$app = createApp({ render: () => h(app, props) })
+    let $app = createApp({ render: () => h(app, props) })
       .use(plugin)
       .use(VueParticles)
       .component('font-awesome-icon', FontAwesomeIcon)
       .component("Link", Link)
       .component("Head", Head)
       .mixin({ methods: { route } })
-      .mount(el);
+      .provide('lodash', window._);
+      //custom globals
+      $app.config.globalProperties.$_ = window._;
+      window.$app = $app.mount(el);
       return window.$app;
     }
 });

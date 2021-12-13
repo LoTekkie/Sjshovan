@@ -19,9 +19,9 @@
           <ul class="flex items-center">
             <li v-for="item in this.navItems.slice(0, -1)" class="group pl-6">
               <span @click="this.scrollTo(item.href)" @mouseenter="item.hovered = true" @mouseleave="this.onNavItemMouseLeave"
-                    class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer">
-                <decode-effect v-if="item.hovered" v-bind="this.fxDecodeOptions" :direction="1" :startDelay="0" :scramble="false" :decodeDelay="100">{{ item.href }}</decode-effect>
-                <span v-if="!item.hovered">{{ item.href }}</span>
+                    class="font-header font-semibold text-white uppercase pt-0.5 cursor-pointer w-full h-full">
+                <decode-effect v-if="item.hovered" v-bind="this.fxDecodeOptions" :direction="1" :startDelay="0" :scramble="false" :decodeDelay="100" >{{ item.href }}</decode-effect>
+                <span v-if="!item.hovered" class="h-full w-full pt-0.5">{{ item.href }}</span>
                 <span class="block w-full h-0.5 bg-transparent group-hover:bg-orange mt-1"></span>
               </span>
             </li>
@@ -51,17 +51,25 @@
       </div>
     </div>
     <!--mobile-->
-    <div :class="{ 'opacity-100 pointer-events-auto': this.mobileMenu }"
+    <div v-if="this.mobileMenu" :class="{ 'opacity-100 pointer-events-auto': this.mobileMenu }"
          class="fixed inset-0 bg-black bg-opacity-70 z-50 min-h-screen lg:hidden transition-opacity opacity-0 pointer-events-none">
        <div class="bg-center bg-cover bg-no-repeat absolute inset-0 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to "></div>
       <div class="w-2/3 md:w-1/3 bg-primary-darker min-h-screen absolute right-0 shadow py-4 px-8">
-        <button @click="this.mobileMenu = false" class="absolute top-0 right-0 mt-4 mr-4">
+        <button @click="() => { this.mobileMenu = false; this.onNavItemMouseLeave; }" class="absolute top-0 right-0 mt-4 mr-4">
           <img alt="" class="h-10 w-auto" src="/img/icon-close.svg">
         </button>
         <ul class="flex flex-col mt-12">
-          <li v-for="item in this.navItems.slice(0, -1)" class="group py-2 cursor-pointer hover:text-2xl"  @click="() => { this.scrollTo(item.href); this.mobileMenu = false; }">
-            <span class="font-header font-semibold text-white uppercase pt-0.5">{{ item.href }}</span>
-            <span class="block h-0.5 bg-transparent group-hover:bg-orange mt-1"></span>
+          <li v-for="item in this.navItems.slice(0, -1)" class="items-center h-8 group py-2 cursor-pointer mb-4" @mouseenter="item.hovered = true" @mouseleave="item.hovered = false"  @click="() => { this.scrollTo(item.href);  }">
+            <div v-if="item.hovered"  class="text-primary-lightest-500 absolute text-4xl left-16 -mt-4 font-bold uppercase">
+              <decode-effect v-bind="this.fxDecodeOptions" :decodeDelay="50" :theme="{ wrap: ['w-100', 'flex', 'flex-row', 'flex-nowrap'],  chars: { encoded: ['text-primary-lightest-500', 'font-bold'] }}">{{ item.href }}</decode-effect>
+            </div>
+            <div class="flex flex-row flex-nowrap items-center">
+               <i v-if="item.hovered" class='bx bx-chevron-right text-orange text-3xl -ml-1 mt-1'></i>
+              <span class="font-header font-semibold text-white uppercase pt-0.5 z-10"
+                     :class="{'text-2xl':item.hovered}">{{ item.href }}</span>
+            </div>
+            <span class="block h-0.5 bg-transparent group-hover:bg-orange  scale-x-70 transition-all ease-in-out duration-500 origin-left mt-1 z-10"
+                  :class="{'scale-x-0':!item.hovered, 'scale-x-75,pl-4':item.hovered}"></span>
           </li>
         </ul>
       </div>
@@ -686,8 +694,10 @@
           });
       },
 
-      onNavItemMouseLeave(e) {
-        setTimeout(this.clearNavItemsHovered, 10);
+      async onNavItemMouseLeave(e) {
+        await _h.asyncDelay(100)
+          .then(this.clearNavItemsHovered)
+
       },
 
       handleScroll(e) {

@@ -29367,7 +29367,7 @@ var _propDefaults = {
       }),
       loc: {
         text: this.text,
-        theme: _.merge(_propDefaults.theme, this.theme)
+        theme: _.merge(this.theme, _propDefaults.theme)
       }
     };
   },
@@ -31302,21 +31302,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/PageLayout */ "./resources/js/Layouts/PageLayout.vue");
-/* harmony import */ var _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/DecodeEffect */ "./resources/js/Components/DecodeEffect.vue");
-/* harmony import */ var _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/MatrixEffect */ "./resources/js/Components/MatrixEffect.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/PageLayout */ "./resources/js/Layouts/PageLayout.vue");
+/* harmony import */ var _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/DecodeEffect */ "./resources/js/Components/DecodeEffect.vue");
+/* harmony import */ var _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/MatrixEffect */ "./resources/js/Components/MatrixEffect.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
 
 var stickyOffset = 0;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
   layout: null,
   components: {
-    PageLayout: _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
-    DecodeEffect: _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_2__["default"],
-    MatrixEffect: _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_3__["default"]
+    PageLayout: _Layouts_PageLayout__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DecodeEffect: _Components_DecodeEffect__WEBPACK_IMPORTED_MODULE_3__["default"],
+    MatrixEffect: _Components_MatrixEffect__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -31410,7 +31418,23 @@ var stickyOffset = 0;
       });
     },
     onNavItemMouseLeave: function onNavItemMouseLeave(e) {
-      setTimeout(this.clearNavItemsHovered, 10);
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _h.asyncDelay(100).then(_this.clearNavItemsHovered);
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     handleScroll: function handleScroll(e) {
       this.isNavHeaderSticky = window.pageYOffset > stickyOffset;
@@ -35874,7 +35898,8 @@ var _hoisted_10 = {
 };
 var _hoisted_11 = ["onClick", "onMouseenter"];
 var _hoisted_12 = {
-  key: 1
+  key: 1,
+  "class": "h-full w-full pt-0.5"
 };
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -35927,35 +35952,36 @@ var _hoisted_24 = [_hoisted_23];
 var _hoisted_25 = {
   "class": "flex flex-col mt-12"
 };
-var _hoisted_26 = ["onClick"];
+var _hoisted_26 = ["onMouseenter", "onMouseleave", "onClick"];
 var _hoisted_27 = {
-  "class": "font-header font-semibold text-white uppercase pt-0.5"
+  key: 0,
+  "class": "text-primary-lightest-500 absolute text-4xl left-16 -mt-4 font-bold uppercase"
 };
-
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "block h-0.5 bg-transparent group-hover:bg-orange mt-1"
-}, null, -1
-/* HOISTED */
-);
-
+var _hoisted_28 = {
+  "class": "flex flex-row flex-nowrap items-center"
+};
 var _hoisted_29 = {
+  key: 0,
+  "class": "bx bx-chevron-right text-orange text-3xl -ml-1 mt-1"
+};
+var _hoisted_30 = {
   "class": "bg-center bg-cover bg-no-repeat relative py-8"
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-center bg-cover bg-no-repeat absolute inset-0 z-20 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_31 = {
+var _hoisted_32 = {
   "class": "container z-30 relative pt-20 sm:pt-56 lg:pt-64 pb-12 sm:pb-48 lg:pb-48"
 };
-var _hoisted_32 = {
+var _hoisted_33 = {
   "class": "flex flex-col lg:flex-row justify-center items-center"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "rounded-full border-8 border-primary shadow-xl flex-shrink-0"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   alt: "author",
@@ -35965,20 +35991,20 @@ var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_34 = {
+var _hoisted_35 = {
   "class": "lg:pl-8 pt-8 sm:pt-10 lg:pt-0"
 };
-var _hoisted_35 = {
+var _hoisted_36 = {
   "class": "font-header text-white text-4xl sm:text-5xl md:text-6xl text-center truncate md:max-h-16"
 };
 
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Hi, I'm Sid Shovan!");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Hi, I'm Sid Shovan!");
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"font-body text-white pt-6 list-disc ml-6 text-base\"><li>Full-stack developer specializing in the Laravel framework.</li><li>Proven leader who fosters collaborative and supportive team environments.</li><li>Quickly learns new software and hardware technologies.</li><li>Professional, skilled, and passionate.</li></ul><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-3 sm:pt-5\"><div class=\"flex justify-center sm:justify-start items-center\"><p class=\"font-body text-white text-lg uppercase\"></p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-orange text-3xl -ml-1\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-orange text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-orange text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-orange text-2xl\"></i></a></div></div>", 2);
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"font-body text-white pt-6 list-disc ml-6 text-base\"><li>Full-stack developer specializing in the Laravel framework.</li><li>Proven leader who fosters collaborative and supportive team environments.</li><li>Quickly learns new software and hardware technologies.</li><li>Professional, skilled, and passionate.</li></ul><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-3 sm:pt-5\"><div class=\"flex justify-center sm:justify-start items-center\"><p class=\"font-body text-white text-lg uppercase\"></p><div class=\"hidden sm:block\"><i class=\"bx bx-chevron-right text-orange text-3xl -ml-1\"></i></div></div><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0 pl-2\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-orange text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-orange text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-orange text-2xl\"></i></a></div></div>", 2);
 
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-grey-50\" id=\"skills\"><div class=\"container py-16 md:py-20 flex flex-col lg:flex-row items-center\"><div class=\"w-full sm:w-3/4 lg:w-3/5 text-center lg:text-left\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase\"> Skills </h2><p class=\"font-body text-grey-20 pt-6 leading-relaxed\"></p><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-6\"></div></div><div class=\"w-full sm:w-3/4 lg:w-2/5 pl-0 lg:pl-12 pt-10 lg:pt-0\"></div></div></div><div class=\"container py-16 md:py-20\" id=\"services\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s what I&#39;m good at</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> These are the services Ioffer</h3><div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pt-10 md:pt-12\"><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"development icon\" src=\"/img/icon-development-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"development icon\" src=\"/img/icon-development-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> WEB DEVELOPMENT</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"content marketing icon\" src=\"/img/icon-content-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"content marketing icon\" src=\"/img/icon-content-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Technical Writing</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Mobile Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Email Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Graphic Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Web Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"portfolio\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Check out my Portfolio</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I have done with the past</h3><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 pt-12\"><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-apple.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-stripe.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-fedex.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-microsoft.jpeg\"></a></div></div><div class=\"bg-grey-50\" id=\"clients\"><div class=\"container py-16 md:py-20\"><div class=\"w-full sm:w-3/4 lg:w-full mx-auto\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My latest clients</h2><div class=\"flex flex-wrap items-center justify-center pt-4 sm:pt-4\"><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-coca-cola.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-apple.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-netflix.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-amazon.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-stripe.svg\"></span></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"work\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My work experience </h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I did before freelancing </h3><div class=\"w-full lg:w-2/3 mx-auto flex flex-col mt-12 relative\"><span class=\"absolute inset-y-0 left-2/5 ml-10 w-0.5 bg-grey-40 hidden md:block\"></span><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-spotify.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Apr2015 - Mar 2018</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Frontend Developer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-microsoft.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Mar 2018 - September 2019</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Software Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-fedex.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">October 2019 - Feb 2021</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">DevOps Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vestibulum mattis felis vitae risus pulvinartincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div></div></div><div class=\"bg-top bg-cover bg-no-repeat pb-16 md:py-16 lg:py-24\" id=\"statistics\" style=\"background-image:url(/img/experience-figure.png);\"><div class=\"container\"><div class=\"bg-white w-5/6 md:w-11/12 2xl:w-full mx-auto py-16 lg:py-20 xl:py-24 shadow\"><div class=\"grid grid-cols-2 xl:grid-cols-4 gap-5 md:gap-8 xl:gap-5\"><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon project\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-project.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">12</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Finished Projects </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon award\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-award.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">3</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Awards Won </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon happy clients\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-happy.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">8</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Happy Clients </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon puzzle\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-puzzle.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">99</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Bugs Fixed </h4></div></div></div></div></div></div><div class=\"bg-grey-50\" id=\"blog\"><div class=\"container py-16 md:py-20\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> I also like to write</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Check out my latest posts! </h4><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-10 pt-12\"><a class=\"shadow\" href=\"/post\"><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\" style=\"background-image:url(/img/post-01.png);\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\"> Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">How to become a frontend developer</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a></div></div></div><div class=\"container py-16 md:py-20\" id=\"contact\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s a contact form </h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Have Any Questions? </h4><div class=\"w-full sm:w-2/3 mx-auto pt-5 lg:pt-6 text-center\"><p class=\"font-body text-grey-10\">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit condimentum turpis nisl sem, viverra habitasse urna ante lobortis fermentum accumsan. Viverra habitasse urna ante lobortis fermentum accumsan.</p></div><form class=\"w-full sm:w-3/4 mx-auto pt-10\"><div class=\"flex flex-col md:flex-row\"><input class=\"w-full md:w-1/2 mr-3 lg:mr-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"name\" placeholder=\"Name\" type=\"text\"><input class=\"w-full md:w-1/2 mt-6 md:mt-0 md:ml-3 lg:ml-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"email\" placeholder=\"Email\" type=\"text\"></div><textarea class=\"w-full font-body text-black px-4 py-3 border-grey-50 rounded mt-6 md:mt-8\" cols=\"30\" id=\"message\" placeholder=\"Message\" rows=\"10\">\n                        </textarea><button class=\"bg-primary hover:bg-grey-20 font-header font-bold text-lg text-white px-8 py-3 flex justify-center mt-6 rounded items-center uppercase\"> Send <i class=\"bx bx-chevron-right text-3xl relative -right-2\"></i></button></form><div class=\"flex flex-col lg:flex-row pt-16\"><div class=\"w-full lg:w-1/3 border-l-2 border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-phone text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\">My Phone</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\">(+881) 111 222 333</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-envelope text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Email</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> name@mydomain.com</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-map text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Address</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> 123 New York D Block 1100, 2011 USA</p></div></div></div><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-64 md:h-72 lg:h-96\" style=\"background-image:url(/img/map.png);\"></div><div class=\"bg-center bg-cover bg-no-repeat relative py-16 lg:py-24 bg-primary bg-blend-multiply\" style=\"background-image:url(/img/bg-cta.jpg);\"><div class=\"container z-30 relative\"><h3 class=\"font-header text-white text-3xl sm:text-4xl lg:text-5xl uppercase leading-tight text-center tracking-wide\"> Keep <span class=\"font-bold\">up-to-date</span><br> with what I&#39;m up to</h3><form class=\"flex flex-col sm:flex-row justify-center mt-6\"><input class=\"w-full sm:w-2/5 lg:w-1/3 font-body text-black px-4 py-3 sm:py-4 rounded\" id=\"email\" placeholder=\"Give me your Email\" type=\"text\"><button class=\"font-body font-bold px-8 py-3 sm:py-4 bg-yellow hover:bg-primary text-base md:text-lg text-primary hover:text-white uppercase rounded sm:ml-2 mt-2 sm:mt-0 transition-colors focus:ring focus:ring-yellow focus:border-transparent focus:outline-none\"> Join the club</button></form></div></div>", 10);
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-grey-50\" id=\"skills\"><div class=\"container py-16 md:py-20 flex flex-col lg:flex-row items-center\"><div class=\"w-full sm:w-3/4 lg:w-3/5 text-center lg:text-left\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase\"> Skills </h2><p class=\"font-body text-grey-20 pt-6 leading-relaxed\"></p><div class=\"flex flex-col sm:flex-row justify-center lg:justify-start pt-6\"></div></div><div class=\"w-full sm:w-3/4 lg:w-2/5 pl-0 lg:pl-12 pt-10 lg:pt-0\"></div></div></div><div class=\"container py-16 md:py-20\" id=\"services\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s what I&#39;m good at</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> These are the services Ioffer</h3><div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pt-10 md:pt-12\"><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"development icon\" src=\"/img/icon-development-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"development icon\" src=\"/img/icon-development-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> WEB DEVELOPMENT</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"content marketing icon\" src=\"/img/icon-content-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"content marketing icon\" src=\"/img/icon-content-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Technical Writing</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Mobile Application icon\" src=\"/img/icon-mobile-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Mobile Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Email Marketing icon\" src=\"/img/icon-email-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Email Development</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Theme Design icon\" src=\"/img/icon-design-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Graphic Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div><div class=\"shadow px-8 py-12 hover:bg-primary group rounded\"><div class=\"text-center w-24 xl:w-28 h-24 xl:h-28 mx-auto\"><div class=\"hidden group-hover:block\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-white.svg\"></div><div class=\"block group-hover:hidden\"><img alt=\"Graphic Design icon\" src=\"/img/icon-graphics-black.svg\"></div></div><div class=\"text-center\"><h3 class=\"font-semibold text-lg lg:text-xl text-primary uppercase pt-8 group-hover:text-yellow\"> Web Design</h3><p class=\"text-sm md:text-base text-grey pt-4 group-hover:text-white\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"portfolio\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Check out my Portfolio</h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I have done with the past</h3><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 pt-12\"><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-apple.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-stripe.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-fedex.jpeg\"></a><a class=\"mx-auto md:mx-0 transition-all transform hover:scale-105\" href=\"/\"><img alt=\"portfolio image\" class=\"shadow w-full\" src=\"/img/portfolio-microsoft.jpeg\"></a></div></div><div class=\"bg-grey-50\" id=\"clients\"><div class=\"container py-16 md:py-20\"><div class=\"w-full sm:w-3/4 lg:w-full mx-auto\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My latest clients</h2><div class=\"flex flex-wrap items-center justify-center pt-4 sm:pt-4\"><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-coca-cola.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-apple.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-netflix.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-amazon.svg\"></span><span class=\"block m-8\"><img alt=\"client logo\" class=\"mx-auto block h-12 w-auto\" src=\"/img/logo-stripe.svg\"></span></div></div></div></div><div class=\"container py-16 md:py-20\" id=\"work\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> My work experience </h2><h3 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Here&#39;s what I did before freelancing </h3><div class=\"w-full lg:w-2/3 mx-auto flex flex-col mt-12 relative\"><span class=\"absolute inset-y-0 left-2/5 ml-10 w-0.5 bg-grey-40 hidden md:block\"></span><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-spotify.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Apr2015 - Mar 2018</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Frontend Developer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-microsoft.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">Mar 2018 - September 2019</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">Software Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div><div class=\"flex flex-col md:flex-row text-center md:text-left mt-8\"><div class=\"md:w-2/5\"><div class=\"flex justify-center md:justify-start\"><span class=\"flex-shrink-0\"><img alt=\"company logo\" class=\"w-32 h-auto\" src=\"/img/logo-fedex.svg\"></span><div class=\"relative w-full ml-3 hidden md:block\"><span class=\"h-0.5 bg-grey-70 absolute inset-x-0 top-1/2 transform -translate-y-1/2\"></span></div></div></div><div class=\"md:w-3/5\"><div class=\"flex md:pl-18 relative\"><span class=\"border-2 border-grey-40 rounded-full w-4 h-4 absolute left-8 top-1 bg-white hidden md:block\"></span><div class=\"mt-1 flex\"><i class=\"bx bxs-right-arrow text-primary hidden md:block\"></i><div class=\"md:pl-8 md:-mt-1\"><span class=\"font-body font-bold text-grey-40 block\">October 2019 - Feb 2021</span><span class=\"font-header font-bold text-xl text-primary uppercase block pt-2\">DevOps Engineer</span><div class=\"pt-2\"><span class=\"font-body text-black block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vestibulum mattis felis vitae risus pulvinartincidunt. Nam ac venenatis enim.</span></div></div></div></div></div></div></div></div><div class=\"bg-top bg-cover bg-no-repeat pb-16 md:py-16 lg:py-24\" id=\"statistics\" style=\"background-image:url(/img/experience-figure.png);\"><div class=\"container\"><div class=\"bg-white w-5/6 md:w-11/12 2xl:w-full mx-auto py-16 lg:py-20 xl:py-24 shadow\"><div class=\"grid grid-cols-2 xl:grid-cols-4 gap-5 md:gap-8 xl:gap-5\"><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon project\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-project.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">12</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Finished Projects </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left\"><div><img alt=\"icon award\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-award.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">3</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Awards Won </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon happy clients\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-happy.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">8</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Happy Clients </h4></div></div><div class=\"flex md:flex-row flex-col justify-center items-center text-center md:text-left lg:mt-0 md:mt-10 mt-6\"><div><img alt=\"icon puzzle\" class=\"mx-auto h-12 md:h-20 w-auto\" src=\"/img/icon-puzzle.svg\"></div><div class=\"md:pl-5 md:pt-0 pt-5\"><h1 class=\"font-body font-bold md:text-4xl text-2xl text-primary\">99</h1><h4 class=\"font-header font-medium md:text-xl text-base text-grey-dark leading-loose\"> Bugs Fixed </h4></div></div></div></div></div></div><div class=\"bg-grey-50\" id=\"blog\"><div class=\"container py-16 md:py-20\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> I also like to write</h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Check out my latest posts! </h4><div class=\"w-full sm:w-3/4 lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-10 pt-12\"><a class=\"shadow\" href=\"/post\"><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-84 lg:h-64 xl:h-72 relative group\" style=\"background-image:url(/img/post-01.png);\"><span class=\"bg-cover bg-no-repeat bg-center absolute inset-0 opacity-10 transition-opacity group-hover:opacity-50 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to\"></span><span class=\"font-body font-bold text-sm md:text-base text-white border-2 border-white block px-6 py-2 uppercase rounded-full text-center absolute right-0 bottom-0 mr-4 mb-4\"> Read More</span></div><div class=\"bg-white py-6 xl:py-8 px-5\"><span class=\"font-body font-semibold text-lg text-black block\">How to become a frontend developer</span><span class=\"font-body text-grey-20 pt-2 block\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></a></div></div></div><div class=\"container py-16 md:py-20\" id=\"contact\"><h2 class=\"font-header font-semibold text-primary text-4xl sm:text-5xl lg:text-6xl uppercase text-center\"> Here&#39;s a contact form </h2><h4 class=\"font-header font-medium text-black text-xl sm:text-2xl lg:text-3xl pt-6 text-center\"> Have Any Questions? </h4><div class=\"w-full sm:w-2/3 mx-auto pt-5 lg:pt-6 text-center\"><p class=\"font-body text-grey-10\">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit condimentum turpis nisl sem, viverra habitasse urna ante lobortis fermentum accumsan. Viverra habitasse urna ante lobortis fermentum accumsan.</p></div><form class=\"w-full sm:w-3/4 mx-auto pt-10\"><div class=\"flex flex-col md:flex-row\"><input class=\"w-full md:w-1/2 mr-3 lg:mr-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"name\" placeholder=\"Name\" type=\"text\"><input class=\"w-full md:w-1/2 mt-6 md:mt-0 md:ml-3 lg:ml-5 font-body text-black px-4 py-3 border-grey-50 rounded\" id=\"email\" placeholder=\"Email\" type=\"text\"></div><textarea class=\"w-full font-body text-black px-4 py-3 border-grey-50 rounded mt-6 md:mt-8\" cols=\"30\" id=\"message\" placeholder=\"Message\" rows=\"10\">\n                        </textarea><button class=\"bg-primary hover:bg-grey-20 font-header font-bold text-lg text-white px-8 py-3 flex justify-center mt-6 rounded items-center uppercase\"> Send <i class=\"bx bx-chevron-right text-3xl relative -right-2\"></i></button></form><div class=\"flex flex-col lg:flex-row pt-16\"><div class=\"w-full lg:w-1/3 border-l-2 border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-phone text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\">My Phone</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\">(+881) 111 222 333</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-envelope text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Email</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> name@mydomain.com</p></div><div class=\"w-full lg:w-1/3 border-l-2 lg:border-l-0 border-t-0 lg:border-t-2 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8\"><div class=\"flex items-center\"><i class=\"bx bx-map text-grey-40 text-2xl\"></i><p class=\"font-body font-bold text-grey-40 lg:text-lg uppercase pl-2\"> My Address</p></div><p class=\"font-body font-bold text-primary lg:text-lg pt-2 text-left\"> 123 New York D Block 1100, 2011 USA</p></div></div></div><div class=\"bg-center bg-cover bg-no-repeat h-72 sm:h-64 md:h-72 lg:h-96\" style=\"background-image:url(/img/map.png);\"></div><div class=\"bg-center bg-cover bg-no-repeat relative py-16 lg:py-24 bg-primary bg-blend-multiply\" style=\"background-image:url(/img/bg-cta.jpg);\"><div class=\"container z-30 relative\"><h3 class=\"font-header text-white text-3xl sm:text-4xl lg:text-5xl uppercase leading-tight text-center tracking-wide\"> Keep <span class=\"font-bold\">up-to-date</span><br> with what I&#39;m up to</h3><form class=\"flex flex-col sm:flex-row justify-center mt-6\"><input class=\"w-full sm:w-2/5 lg:w-1/3 font-body text-black px-4 py-3 sm:py-4 rounded\" id=\"email\" placeholder=\"Give me your Email\" type=\"text\"><button class=\"font-body font-bold px-8 py-3 sm:py-4 bg-yellow hover:bg-primary text-base md:text-lg text-primary hover:text-white uppercase rounded sm:ml-2 mt-2 sm:mt-0 transition-colors focus:ring focus:ring-yellow focus:border-transparent focus:outline-none\"> Join the club</button></form></div></div>", 10);
 
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-primary\"><div class=\"container py-6 flex flex-col sm:flex-row justify-between\"><p class=\"font-body text-white text-center md:text-left\">© Copyright 2021. All right reserved, ATOM.</p><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div></div>", 1);
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-primary\"><div class=\"container py-6 flex flex-col sm:flex-row justify-between\"><p class=\"font-body text-white text-center md:text-left\">© Copyright 2021. All right reserved, ATOM.</p><div class=\"flex items-center justify-center sm:justify-start pt-5 sm:pt-0\"><a href=\"/\"><i class=\"bx bxl-facebook-square text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-twitter text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-dribbble text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-linkedin text-white hover:text-yellow text-2xl\"></i></a><a class=\"pl-4\" href=\"/\"><i class=\"bx bxl-instagram text-white hover:text-yellow text-2xl\"></i></a></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
@@ -36030,7 +36056,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onMouseleave: _cache[0] || (_cache[0] = function () {
         return _this.onNavItemMouseLeave && _this.onNavItemMouseLeave.apply(_this, arguments);
       }),
-      "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer"
+      "class": "font-header font-semibold text-white uppercase pt-0.5 cursor-pointer w-full h-full"
     }, [item.hovered ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
       key: 0
     }, _this.fxDecodeOptions, {
@@ -36124,46 +36150,82 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("mobile"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("mobile"), this.mobileMenu ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'opacity-100 pointer-events-auto': this.mobileMenu
     }, "fixed inset-0 bg-black bg-opacity-70 z-50 min-h-screen lg:hidden transition-opacity opacity-0 pointer-events-none"])
   }, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[4] || (_cache[4] = function ($event) {
-      return _this.mobileMenu = false;
+    onClick: _cache[4] || (_cache[4] = function () {
+      _this.mobileMenu = false;
+      _this.onNavItemMouseLeave;
     }),
     "class": "absolute top-0 right-0 mt-4 mr-4"
   }, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_25, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.navItems.slice(0, -1), function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-      "class": "group py-2 cursor-pointer hover:text-2xl",
+      "class": "items-center h-8 group py-2 cursor-pointer mb-4",
+      onMouseenter: function onMouseenter($event) {
+        return item.hovered = true;
+      },
+      onMouseleave: function onMouseleave($event) {
+        return item.hovered = false;
+      },
       onClick: function onClick() {
         _this.scrollTo(item.href);
-
-        _this.mobileMenu = false;
       }
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.href), 1
-    /* TEXT */
-    ), _hoisted_28], 8
-    /* PROPS */
+    }, [item.hovered ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(_this.fxDecodeOptions, {
+      decodeDelay: 50,
+      theme: {
+        wrap: ['w-100', 'flex', 'flex-row', 'flex-nowrap'],
+        chars: {
+          encoded: ['text-primary-lightest-500', 'font-bold']
+        }
+      }
+    }), {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.href), 1
+        /* TEXT */
+        )];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1040
+    /* FULL_PROPS, DYNAMIC_SLOTS */
+    )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [item.hovered ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_29)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-header font-semibold text-white uppercase pt-0.5 z-10", {
+        'text-2xl': item.hovered
+      }])
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.href), 3
+    /* TEXT, CLASS */
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["block h-0.5 bg-transparent group-hover:bg-orange scale-x-70 transition-all ease-in-out duration-500 origin-left mt-1 z-10", {
+        'scale-x-0': !item.hovered,
+        'scale-x-75,pl-4': item.hovered
+      }])
+    }, null, 2
+    /* CLASS */
+    )], 40
+    /* PROPS, HYDRATE_EVENTS */
     , _hoisted_26);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))])])], 2
   /* CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("/mobile"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("/nav"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_matrix_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(this.fxMatrixOptions)), null, 16
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("/mobile"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("/nav"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_matrix_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)(this.fxMatrixOptions)), null, 16
   /* FULL_PROPS */
-  ), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(this.fxDecodeOptions, {
+  ), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_decode_effect, (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(this.fxDecodeOptions, {
     decodeDelay: 50
   }), {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_36];
+      return [_hoisted_37];
     }),
     _: 1
     /* STABLE */
 
   }, 16
   /* FULL_PROPS */
-  )]), _hoisted_37])])])]), _hoisted_39]), _hoisted_49], 4
+  )]), _hoisted_38])])])]), _hoisted_40]), _hoisted_50], 4
   /* STYLE */
   )], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -38532,7 +38594,7 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
         app = _ref.app,
         props = _ref.props,
         plugin = _ref.plugin;
-    window.$app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
+    var $app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
       render: function render() {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(app, props);
       }
@@ -38540,7 +38602,10 @@ if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchM
       methods: {
         route: route
       }
-    }).mount(el);
+    }).provide('lodash', window._); //custom globals
+
+    $app.config.globalProperties.$_ = window._;
+    window.$app = $app.mount(el);
     return window.$app;
   }
 });

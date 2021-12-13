@@ -78,7 +78,7 @@
         }),
         loc: {
           text: this.text,
-          theme: _.merge(_propDefaults.theme, this.theme),
+          theme: _.merge(this.theme, _propDefaults.theme),
         },
       };
     },
