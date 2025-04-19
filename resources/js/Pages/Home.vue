@@ -83,7 +83,7 @@
         <div class="container z-30 relative pt-20 sm:pt-56 lg:pt-64 pb-12 sm:pb-48 lg:pb-48">
           <div class="flex flex-col lg:flex-row justify-center items-center">
             <div class="rounded-full border-8 border-primary shadow-xl flex-shrink-0">
-              <img alt="author" class="h-48 sm:h-56 rounded-full" src="/img/me.jpg">
+              <img alt="author" class="h-48 sm:h-56 rounded-full" src="/img/dani_and_i.jpg">
             </div>
             <div class="lg:pl-8 pt-8 sm:pt-10 lg:pt-0">
               <h1 class="font-header text-white text-4xl sm:text-5xl md:text-6xl text-center truncate md:max-h-16">
